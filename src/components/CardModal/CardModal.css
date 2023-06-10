@@ -11,11 +11,11 @@
     transform: translate(-50%, -50%);
     background-color: #fff;
     box-shadow: 0px 11px 15px -7px rgba(0, 0, 0, 0.2), 0px 24px 38px 3px rgba(0, 0, 0, 0.14), 0px 9px 46px 8px rgba(0, 0, 0, 0.12);
-    overflow-y: auto;
+    outline: 0;
 }
 
 .transition-modal-description {
-    max-width: 60%;
+    
 }
 
 .cardmodal__closebtn {
@@ -25,7 +25,7 @@
 .cardmodal__body {
     display: flex;
     align-items: center;
-    overflow-y: auto;
+    overflow: auto;
 }
 
 .cardmodal__card-vid {
@@ -36,6 +36,7 @@
 }
 
 .cardmodal__p {
+    margin-top: 0;
     white-space: break-spaces;
 }
 
@@ -43,19 +44,35 @@
     .cardmodal__body {
         flex-direction: column;
         text-align: justify;
-    }
-    
-    .cardmodal__card-vid {
-        margin-right: 0;
+        overflow-y: scroll;
     }
 
-    .transition-modal-description {
-        max-width: 100%;
+    .cardmodal__card-vid {
+        margin-right: 0;
+        max-width: 30%;
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 425px) {
+    .cardmodal__card-vid {
+        max-width: 50%;
     }
 }
 
 @media (max-height: 425px) {
     .cardmodal__body {
+        align-items: flex-start;
         flex-direction: row;
+        width: 100%;
+    }
+
+    .cardmodal__card-vid {
+        margin-right: 20px;
+    }
+
+    .transition-modal-description {
+        overflow-y: auto;
+        height: 100%;
     }
 }

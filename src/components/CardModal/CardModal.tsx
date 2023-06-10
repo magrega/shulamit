@@ -30,7 +30,7 @@ const CardModal: FC<ICardModal> = ({ open, content, handleClose }) => {
                     <Box className='cardmodal'>
                         <button className='cardmodal__closebtn' onClick={handleClose}>X</button>
                         <div className="cardmodal__body">
-                            <video className="cardmodal__card-vid" autoPlay={true} loop={true} src={require(`../../assets/video/${content.id}.mp4`)} />
+                            <video className="cardmodal__card-vid" autoPlay={true} loop={true} playsInline={true} controls={true} src={require(`../../assets/video/${content.id}.mp4`)} />
                             <div id="transition-modal-description" className='transition-modal-description'>
                                 <p className='cardmodal__p' >{`Тотем силы: ${content.totem}`}</p>
                                 <p className='cardmodal__p' >{`Буква Иврита: ${content.letter}`}</p>
