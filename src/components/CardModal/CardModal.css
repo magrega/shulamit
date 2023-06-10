@@ -1,0 +1,57 @@
+.MuiBox-root.cardmodal {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    box-shadow: 0px 11px 15px -7px rgba(0, 0, 0, 0.2), 0px 24px 38px 3px rgba(0, 0, 0, 0.14), 0px 9px 46px 8px rgba(0, 0, 0, 0.12);
+    overflow-y: auto;
+}
+
+.transition-modal-description {
+    max-width: 60%;
+}
+
+.cardmodal__closebtn {
+    align-self: flex-end;
+}
+
+.cardmodal__body {
+    display: flex;
+    align-items: center;
+    overflow-y: auto;
+}
+
+.cardmodal__card-vid {
+    max-width: 100%;
+    max-height: 100%;
+    margin-right: 20px;
+    border-radius: 20px;
+}
+
+@media (max-width: 1000px) {
+    .cardmodal__body {
+        flex-direction: column;
+        text-align: justify;
+    }
+    
+    .cardmodal__card-vid {
+        margin-right: 0;
+    }
+
+    .transition-modal-description {
+        max-width: 100%;
+    }
+}
+
+@media (max-height: 425px) {
+    .cardmodal__body {
+        flex-direction: row;
+    }
+}
