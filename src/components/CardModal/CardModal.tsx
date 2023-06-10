@@ -32,12 +32,12 @@ const CardModal: FC<ICardModal> = ({ open, content, handleClose }) => {
                         <div className="cardmodal__body">
                             <video className="cardmodal__card-vid" autoPlay={true} loop={true} src={require(`../../assets/video/${content.id}.mp4`)} />
                             <div id="transition-modal-description" className='transition-modal-description'>
-                                <p>{`Тотем силы: ${content.totem}`}</p>
-                                <p>{`Буква Иврита: ${content.letter}`}</p>
-                                <p>{`Значение: ${content.meaning}`}</p>
-                                <p>{`Элемент: ${content.element}`}</p>
-                                <p>{`Символы: ${content.symbols}`}</p>
-                                <p>{`Описание: ${content.description}`}</p>
+                                <p className='cardmodal__p' >{`Тотем силы: ${content.totem}`}</p>
+                                <p className='cardmodal__p' >{`Буква Иврита: ${content.letter}`}</p>
+                                <p className='cardmodal__p' >{`Значение: ${content.meaning}`}</p>
+                                <p className='cardmodal__p' >{`Элемент: ${content.element}`}</p>
+                                <p className='cardmodal__p' >{`Символы: ${content.symbols}`}</p>
+                                <p className='cardmodal__p' >{`Описание: ${content.description}`}</p>
                             </div>
                         </div>
                     </Box>

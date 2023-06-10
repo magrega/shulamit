@@ -35,6 +35,10 @@
     border-radius: 20px;
 }
 
+.cardmodal__p {
+    white-space: break-spaces;
+}
+
 @media (max-width: 1000px) {
     .cardmodal__body {
         flex-direction: column;
