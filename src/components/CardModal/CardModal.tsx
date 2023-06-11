@@ -28,7 +28,10 @@ const CardModal: FC<ICardModal> = ({ open, content, handleClose }) => {
             >
                 <Fade in={open}>
                     <Box className='cardmodal'>
-                        <button className='cardmodal__closebtn' onClick={handleClose}>X</button>
+                        <button type="button" className="cardmodal__closebtn" onClick={handleClose}>
+                            <span className='cardmodal__closebtn-item'></span>
+                            <span className='cardmodal__closebtn-item'></span>
+                        </button>
                         <div className="cardmodal__body">
                             <video className="cardmodal__card-vid" autoPlay={true} loop={true} playsInline={true} controls={true} src={require(`../../assets/video/${content.id}.mp4`)} />
                             <div id="transition-modal-description" className='transition-modal-description'>
