@@ -1,5 +1,5 @@
 import { FC, useEffect, useState } from 'react';
-import cards from '../../assets/data.json';
+import cards from '../../assets/randomCards.json';
 import CardModal from '../CardModal/CardModal';
 import Loader from '../Loader/Loader';
 import './WorkGallery.css';
@@ -44,8 +44,7 @@ const WorkGallery: FC = () => {
     }, [imagesLoaded]);
 
     useEffect(() => {
-        shuffleCards(cards)
-
+        shuffleCards(cards);
     }, []);
 
     return (

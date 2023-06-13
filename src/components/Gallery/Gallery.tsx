@@ -1,5 +1,5 @@
 import { FC, useEffect, useState } from 'react';
-import cards from '../../assets/data.json';
+import cards from '../../assets/cards.json';
 import CardModal from '../CardModal/CardModal';
 import Loader from '../Loader/Loader';
 import './Gallery.css';
