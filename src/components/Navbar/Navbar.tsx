@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { Link } from "react-router-dom";
+
 import './Navbar.css';
 
 const Navbar = () => {
@@ -15,6 +17,9 @@ const Navbar = () => {
                 <li className='navbar__li'><a className='navbar__a' href="https://www.shulanika.ru/">На главную</a></li>
                 <li className='navbar__li'><a className='navbar__a' href="https://www.shulanika.ru/internet-magazin">Интернет-магазин</a></li>
                 <li className='navbar__li'><a className='navbar__a' href="https://www.shulanika.ru/internet-magazin#contacts-shop">Контакты</a></li>
+                <li className='navbar__li'><Link className='navbar__a' to="/intro">Знакомство с картами</Link></li>
+                <li className='navbar__li'><Link className='navbar__a' to="/interact">Работа с картами</Link></li>
+
             </ul>
             <div className="navbar__mobile">
                 <span className='navbar__title'>shulanika.ru</span>
