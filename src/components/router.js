@@ -11,5 +11,9 @@ export const router = createBrowserRouter(createRoutesFromElements(
         path="/"
         element={<Navigate to="/intro" replace />}
     />
+    <Route
+        path="/shulamit"
+        element={<Navigate to="/intro" replace />}
+    />
   </Route>
 ))

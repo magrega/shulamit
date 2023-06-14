@@ -1,5 +1,5 @@
 import { FC, useEffect, useState } from 'react';
-import cards from '../../assets/randomCards.json';
+import cards from '../../assets/cards.json';
 import CardModal from '../CardModal/CardModal';
 import Loader from '../Loader/Loader';
 import './WorkGallery.css';
@@ -17,11 +17,16 @@ export type TCard = {
 const WorkGallery: FC = () => {
 
     const shuffleCards = (array: TCard[]) => {
-        for (let i = array.length - 1; i > 0; i--) {
+        const tempArray = [...array];
+        for (let i = tempArray.length - 1; i > 0; i--) {
             let j = Math.floor(Math.random() * (i + 1));
-            [array[i], array[j]] = [array[j], array[i]];
+            [tempArray[i], tempArray[j]] = [tempArray[j], tempArray[i]];
         }
+        console.log('shuffled');
+        return tempArray;
     }
+
+    const [cardsArray, setCardsArray] = useState([...cards]);
 
     const [openModalCard, setOpenModalCard] = useState(false);
     const handleOpen = () => setOpenModalCard(true);
@@ -39,21 +44,22 @@ const WorkGallery: FC = () => {
     }
 
     useEffect(() => {
-        if (imagesLoaded === cards.length) setLoading(false);
+        if (imagesLoaded === cardsArray.length) setLoading(false);
         // eslint-disable-next-line
     }, [imagesLoaded]);
 
     useEffect(() => {
-        shuffleCards(cards);
+        setCardsArray(shuffleCards(cardsArray));
+        // eslint-disable-next-line
     }, []);
 
     return (
         <>
             {loading && <Loader />}
             <div className="gallery-container" style={{ display: loading ? "none" : "flex" }}>
-                {cards.map((card: TCard) => <img key={card.id} src={require(`../../assets/img/cardBack.webp`)} alt={`${card.totem}`} className="gallery-item" onClick={() => showImage(card.id)} onLoad={onLoad} />)}
+                {cardsArray.map((card: TCard) => <img key={card.id} src={require(`../../assets/img/cardBack.webp`)} alt={`${card.totem}`} className="gallery-item" onClick={() => showImage(card.id)} onLoad={onLoad} />)}
             </div>
-            <CardModal open={openModalCard} handleClose={handleClose} content={cards[imageNum]} />
+            <CardModal open={openModalCard} handleClose={handleClose} content={cardsArray[imageNum]} />
         </>
     );
 };

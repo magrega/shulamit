@@ -1,15 +1,22 @@
-import { useState } from 'react';
-import { Link } from "react-router-dom";
+import { useEffect, useState } from 'react';
+import { NavLink } from "react-router-dom";
 
 import './Navbar.css';
 
 const Navbar = () => {
     const [isActive, setIsActive] = useState(false);
 
-    const handleClick = () => { 
-        document.body.style.overflow = isActive ? 'unset' : 'hidden';
-        setIsActive(current => !current);
-    }
+    const handleClick = () => setIsActive(current => !current);
+
+    useEffect(() => {
+        document.body.style.overflow = isActive ? 'hidden' : 'unset';
+        window.matchMedia("(orientation: landscape)").addEventListener("change", e => {
+            if (e.matches) {
+                setIsActive(false);
+                document.body.style.overflow = 'unset';
+            }
+        });
+    }, [isActive]);
 
     return (
         <nav className="navbar__container">
@@ -17,8 +24,8 @@ const Navbar = () => {
                 <li className='navbar__li'><a className='navbar__a' href="https://www.shulanika.ru/">На главную</a></li>
                 <li className='navbar__li'><a className='navbar__a' href="https://www.shulanika.ru/internet-magazin">Интернет-магазин</a></li>
                 <li className='navbar__li'><a className='navbar__a' href="https://www.shulanika.ru/internet-magazin#contacts-shop">Контакты</a></li>
-                <li className='navbar__li'><Link className='navbar__a' to="/intro">Знакомство с картами</Link></li>
-                <li className='navbar__li'><Link className='navbar__a' to="/interact">Работа с картами</Link></li>
+                <li className='navbar__li'><NavLink onClick={handleClick} className='navbar__a' to="/intro">Знакомство с картами</NavLink></li>
+                <li className='navbar__li'><NavLink onClick={handleClick} className='navbar__a' to="/interact">Работа с картами</NavLink></li>
 
             </ul>
             <div className="navbar__mobile">

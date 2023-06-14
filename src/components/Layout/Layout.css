@@ -1,13 +1,18 @@
 .footer {
-    height: 60px;
+    height: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: #242424;
 }
 
+.socials-container {
+   
+}
+
 .socials-container__item {
-    height: 30px;
-    width: 30px;
+    height: 32px;
+    width: 32px;
     margin: 0 10px;
+    vertical-align: sub;
 }
