@@ -2,6 +2,7 @@ import { FC, useEffect, useState } from 'react';
 import cards from '../../assets/cards.json';
 import CardModal from '../CardModal/CardModal';
 import Loader from '../Loader/Loader';
+import 'animate.css';
 import './WorkGallery.css';
 
 export type TCard = {
@@ -15,18 +16,11 @@ export type TCard = {
 }
 
 const WorkGallery: FC = () => {
-
-    const shuffleCards = (array: TCard[]) => {
-        const tempArray = [...array];
-        for (let i = tempArray.length - 1; i > 0; i--) {
-            let j = Math.floor(Math.random() * (i + 1));
-            [tempArray[i], tempArray[j]] = [tempArray[j], tempArray[i]];
-        }
-        console.log('shuffled');
-        return tempArray;
-    }
-
     const [cardsArray, setCardsArray] = useState([...cards]);
+
+    const [shuffle, setShuffle] = useState(false);
+
+    const handleShuffle = () => setShuffle(current => !current);
 
     const [openModalCard, setOpenModalCard] = useState(false);
     const handleOpen = () => setOpenModalCard(true);
@@ -43,6 +37,16 @@ const WorkGallery: FC = () => {
         handleOpen();
     }
 
+    const shuffleCards = (array: TCard[]) => {
+        const tempArray = [...array];
+        for (let i = tempArray.length - 1; i > 0; i--) {
+            let j = Math.floor(Math.random() * (i + 1));
+            [tempArray[i], tempArray[j]] = [tempArray[j], tempArray[i]];
+        }
+        setShuffle(false);
+        return tempArray;
+    }
+
     useEffect(() => {
         if (imagesLoaded === cardsArray.length) setLoading(false);
         // eslint-disable-next-line
@@ -51,13 +55,14 @@ const WorkGallery: FC = () => {
     useEffect(() => {
         setCardsArray(shuffleCards(cardsArray));
         // eslint-disable-next-line
-    }, []);
+    }, [shuffle]);
 
     return (
         <>
             {loading && <Loader />}
             <div className="gallery-container" style={{ display: loading ? "none" : "flex" }}>
-                {cardsArray.map((card: TCard) => <img key={card.id} src={require(`../../assets/img/cardBack.webp`)} alt={`${card.totem}`} className="gallery-item" onClick={() => showImage(card.id)} onLoad={onLoad} />)}
+                {cardsArray.map((card: TCard) => <img key={card.id} src={require(`../../assets/img/cardBack.webp`)} alt={`Перевернутая карта`} className={`${shuffle ? 'gallery-item' : 'gallery-item animate__animated animate__shakeX'}`} onClick={() => showImage(card.id)} onLoad={onLoad} />)}
+                <img key={23} src={require(`../../assets/img/shuffle.png`)} alt={`Перемешать карты`} className="gallery-item" onClick={handleShuffle} />
             </div>
             <CardModal open={openModalCard} handleClose={handleClose} content={cardsArray[imageNum]} />
         </>

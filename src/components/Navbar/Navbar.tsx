@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react';
 import { NavLink } from "react-router-dom";
-
 import './Navbar.css';
 
 const Navbar = () => {
     const [isActive, setIsActive] = useState(false);
 
-    const handleClick = () => setIsActive(current => !current);
+    const handleClick = () => { 
+        if (window.innerWidth < 870) setIsActive(current => !current); 
+    }
 
     useEffect(() => {
         document.body.style.overflow = isActive ? 'hidden' : 'unset';

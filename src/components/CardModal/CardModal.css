@@ -14,9 +14,16 @@
     outline: 0;
 }
 
-.transition-modal-description {
-    
+.MuiSkeleton-root.skeleton-modal {
+    height: 100%;
+    width: 100%;
+    transform-origin: unset;
+    transform: none;
+    -webkit-transform: none;
+    overflow: hidden;
 }
+
+.transition-modal-description {}
 
 .cardmodal__closebtn {
     align-self: flex-end;
@@ -26,6 +33,7 @@
     display: flex;
     align-items: center;
     overflow: auto;
+    height: 100%;
 }
 
 .cardmodal__card-vid {
@@ -58,7 +66,7 @@
     height: 3px;
     top: 8px;
     background-color: #565656;
-} 
+}
 
 .cardmodal__closebtn-item:nth-child(1) {
     -webkit-transform: rotate(45deg);
