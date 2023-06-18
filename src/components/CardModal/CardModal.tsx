@@ -1,5 +1,5 @@
-import { Backdrop, Box, Fade, Modal } from '@mui/material';
-import { FC, useState } from 'react';
+import { Box, Fade, Modal } from '@mui/material';
+import { FC } from 'react';
 import { TCard } from '../Gallery/Gallery';
 import './CardModal.css';
 
