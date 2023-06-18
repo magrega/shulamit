@@ -1,5 +1,5 @@
-import { Backdrop, Box, Fade, Modal, Skeleton } from '@mui/material';
-import { FC, useState, useEffect } from 'react';
+import { Backdrop, Box, Fade, Modal } from '@mui/material';
+import { FC, useState } from 'react';
 import { TCard } from '../Gallery/Gallery';
 import './CardModal.css';
 
@@ -11,44 +11,23 @@ interface ICardModal {
 
 const CardModal: FC<ICardModal> = ({ open, content, handleClose }) => {
 
-    const [isSkeleton, setIsSkeleton] = useState(true);
-
-    const handleSkeleton = () => {
-        setIsSkeleton(false);
-        console.log('can play');
-    }
-
-    const closeModal = () => {
-        handleClose();
-        setIsSkeleton(true);
-    }
-
     return (
         <div>
             <Modal
                 aria-labelledby="transition-modal-title"
                 aria-describedby="transition-modal-description"
                 open={open}
-                onClose={closeModal}
-                closeAfterTransition
-                slots={{ backdrop: Backdrop }}
-                slotProps={{
-                    backdrop: {
-                        timeout: 500,
-                    },
-                }}
+                onClose={handleClose}
             >
                 <Fade in={open}>
                     <Box className='cardmodal'>
-                        <button type="button" className="cardmodal__closebtn" onClick={closeModal}>
+                        <button type="button" className="cardmodal__closebtn" onClick={handleClose}>
                             <span className='cardmodal__closebtn-item'></span>
                             <span className='cardmodal__closebtn-item'></span>
                         </button>
                         <div className="cardmodal__body">
-                            {isSkeleton && <Skeleton className="skeleton-modal cardmodal__card-vid" />}
-                            <video style={{ display: isSkeleton ? 'none' : 'inline' }} className="cardmodal__card-vid" onCanPlay={handleSkeleton} autoPlay={true} loop={true} playsInline={true} controls={true} src={require(`../../assets/video/${content.id}.mp4`)} />
-                            {/* <video className="cardmodal__card-vid" autoPlay={true} loop={true} playsInline={true} controls={true} src={require(`../../assets/video/${content.id}.mp4`)} /> */}
-                            <div id="transition-modal-description" className='transition-modal-description'>
+                            <video className="cardmodal__card-vid" poster={require(`../../assets/img/${content.id}.webp`)} autoPlay={true} loop={true} playsInline={true} controls={true} src={require(`../../assets/video/${content.id}.mp4`)} />
+                            <div id="transition-modal-description" className='cardmodal__card-text'>
                                 <p className='cardmodal__p' >{`Тотем силы: ${content.totem}`}</p>
                                 <p className='cardmodal__p' >{`Буква Иврита: ${content.letter}`}</p>
                                 <p className='cardmodal__p' >{`Значение: ${content.meaning}`}</p>
