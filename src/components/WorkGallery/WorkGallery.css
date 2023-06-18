@@ -11,11 +11,31 @@
     border-radius: 20px;
 }
 
+.shuffle-cards {
+    height: fit-content;
+    align-self: center;
+    width: 5%;
+    transition: all .3s;
+}
+
+.shuffle-cards:hover {
+    filter:brightness(60%);
+}
+
+.shuffle-cards:active {
+    filter:brightness(30%);
+}
+
 @media (max-width: 1000px) {
     .gallery-item {
         max-width: 25%;
-        height: auto;
         padding: 10px;
         border-radius: 20px;
     }
+
+    .shuffle-cards {
+        width: 15%;
+        height: auto;
+    }
+    
 }

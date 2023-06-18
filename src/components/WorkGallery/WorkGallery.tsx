@@ -62,7 +62,7 @@ const WorkGallery: FC = () => {
             {loading && <Loader />}
             <div className="gallery-container" style={{ display: loading ? "none" : "flex" }}>
                 {cardsArray.map((card: TCard) => <img key={card.id} src={require(`../../assets/img/cardBack.webp`)} alt={`Перевернутая карта`} className={`${shuffle ? 'gallery-item' : 'gallery-item animate__animated animate__shakeX'}`} onClick={() => showImage(card.id)} onLoad={onLoad} />)}
-                <img key={23} src={require(`../../assets/img/shuffle.png`)} alt={`Перемешать карты`} className="gallery-item" onClick={handleShuffle} />
+                <img key={23} src={require(`../../assets/img/shuffle.png`)} alt={`Перемешать карты`} className="gallery-item shuffle-cards" onClick={handleShuffle} />
             </div>
             <CardModal open={openModalCard} handleClose={handleClose} content={cardsArray[imageNum]} />
         </>

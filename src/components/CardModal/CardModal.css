@@ -76,7 +76,7 @@
     .MuiBox-root.cardmodal {
         padding: 0 10px;
         padding-top: 20px;
-        padding-bottom: 0;
+        padding-bottom: 0px;
     }
 
     .cardmodal__body {
@@ -86,15 +86,24 @@
     }
 
     .cardmodal__card-vid {
+        height: auto;
         margin-right: 0;
         max-width: 30%;
         margin-bottom: 20px;
+    }
+
+    .cardmodal__card-text {
+        font-size: 16px;
     }
 }
 
 @media (max-width: 425px) {
     .cardmodal__card-vid {
         max-width: 50%;
+    }
+
+    .cardmodal__card-text {
+        font-size: 16px;
     }
 }
 
@@ -107,12 +116,12 @@
 
     .cardmodal__card-vid {
         height: inherit;
-        margin-right: 20px;
+        margin-right: 10px;
         margin-bottom: 0;
+        padding: 10px;
     }
 
-    .transition-modal-description {
-        overflow-y: auto;
-        height: 100%;
+    .cardmodal__card-text {
+        font-size: 16px;
     }
 }
