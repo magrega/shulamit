@@ -91,13 +91,13 @@
     }
 
     .cardpage__card-vid {
-        max-width: 25%;
+        max-width: 30%;
     }
 }
 
 @media (max-width: 768px) {
     .cardpage__card-vid {
-        max-width: 40%;
+        max-width: 28%;
     }
 
     .cardpage__h2 {
