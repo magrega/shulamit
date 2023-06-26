@@ -17,8 +17,6 @@ export interface ICard {
 }
 
 const Gallery: FC = () => {
-    const { posts }: any = useLoaderData();
-
     const [imagesLoaded, setImagesLoaded] = useState(0);
     const [loading, setLoading] = useState(true);
     const onImgLoad = () => setImagesLoaded(prev => prev + 1);
@@ -32,7 +30,7 @@ const Gallery: FC = () => {
             <div className="gallery-container" style={{ display: loading ? "none" : "flex" }}>
 
                 {cards.map((card: ICard) =>
-                    <Link key={card.id} style={{ display: 'contents' }} to={`card/${card.id}`}>
+                    <Link key={card.id} style={{ display: 'contents' }} to={`/card/${card.id}`}>
                         <img
                             className="gallery-item"
                             src={require(`../../assets/img/${card.id}.webp`)}
@@ -44,13 +42,5 @@ const Gallery: FC = () => {
         </>
     );
 };
-
-export const cardLoader = async () => {
-
-    return defer({
-        posts: getCardsData()
-    })
-}
-
 
 export default Gallery;

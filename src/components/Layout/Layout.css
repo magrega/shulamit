@@ -1,3 +1,7 @@
+.container {
+    height: 100%;
+}
+
 .footer {
     min-height: 50px;
     margin-top: auto;

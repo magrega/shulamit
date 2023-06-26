@@ -1,9 +1,9 @@
 import { FC, useEffect, useState } from 'react';
 import cards from '../../assets/cards.json';
-// import CardModal from '../CardModal/CardModal';
 import Loader from '../Loader/Loader';
 import 'animate.css';
 import './WorkGallery.css';
+import { Link } from 'react-router-dom';
 
 export type TCard = {
     id: number,
@@ -22,20 +22,10 @@ const WorkGallery: FC = () => {
 
     const handleShuffle = () => setShuffle(current => !current);
 
-    const [openModalCard, setOpenModalCard] = useState(false);
-    const handleOpen = () => setOpenModalCard(true);
-    const handleClose = () => setOpenModalCard(false);
 
     const [imagesLoaded, setImagesLoaded] = useState(0);
     const [loading, setLoading] = useState(true);
     const onLoad = () => setImagesLoaded(prev => prev + 1);
-
-    const [imageNum, setImageNum] = useState(0);
-
-    const showImage = (index: number) => {
-        setImageNum(index);
-        handleOpen();
-    }
 
     const shuffleCards = (array: TCard[]) => {
         const tempArray = [...array];
@@ -61,10 +51,21 @@ const WorkGallery: FC = () => {
         <>
             {loading && <Loader />}
             <div className="gallery-container" style={{ display: loading ? "none" : "flex" }}>
-                {cardsArray.map((card: TCard) => <img key={card.id} src={require(`../../assets/img/cardBack.webp`)} alt={`Перевернутая карта`} className={`${shuffle ? 'gallery-item' : 'gallery-item animate__animated animate__shakeX'}`} onClick={() => showImage(card.id)} onLoad={onLoad} />)}
-                <img key={23} src={require(`../../assets/img/shuffle.png`)} alt={`Перемешать карты`} className="gallery-item shuffle-cards" onClick={handleShuffle} />
+                {cardsArray.map((card: TCard) =>
+                    <Link key={card.id} style={{ display: 'contents' }} to={`/card/${card.id}`}>
+                        <img key={card.id}
+                            className={`${shuffle ? 'gallery-item' : 'gallery-item animate__animated animate__shakeX'}`}
+                            src={require(`../../assets/img/cardBack.webp`)}
+                            alt={`Перевернутая карта`}
+                            onLoad={onLoad} />
+                    </Link>
+                )}
+                <img key={23}
+                    className="gallery-item shuffle-cards"
+                    src={require(`../../assets/img/shuffle.png`)}
+                    alt={`Перемешать карты`}
+                    onClick={handleShuffle} />
             </div>
-            {/* <CardModal open={openModalCard} handleClose={handleClose} content={cardsArray[imageNum]} /> */}
         </>
     );
 };
