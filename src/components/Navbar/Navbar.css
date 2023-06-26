@@ -7,6 +7,7 @@
 
 .navbar_list {
     list-style-type: none;
+    padding: 0;
 }
 
 .navbar__li {
@@ -81,7 +82,9 @@
 
 @media (max-width: 870px) {
     .navbar__container {
-        padding: 0 20px;
+        max-width: 750px;
+        margin: 0 auto;
+        padding: 0 10px;
         height: 60px;
         font-size: 20px;
         font-family: 'Cormorant Garamond', serif;

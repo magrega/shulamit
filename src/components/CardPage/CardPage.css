@@ -2,15 +2,15 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 20px;
+    margin: 0 auto;
+    max-width: 750px;
     padding-top: 0;
 }
 
 .cardpage__body {
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    padding: 0 5%;
+    text-align: justify;
+    white-space: pre-line;
+    margin-bottom: 10px;
 }
 
 .cardpage__video-container {
@@ -18,28 +18,34 @@
 }
 
 .cardpage__card-vid {
-    width: 350px;
-    margin-right: 20px;
+    float: left;
+    width: 320px;
     border-radius: 20px;
+    margin-right: 10px;
 }
 
-.cardpage__card-text {
-    overflow-y: auto;
+.cardpage__text-category {
+    font-weight: bold;
+}
+
+.cardpage__text-description {
     text-align: justify;
-    flex-basis: 50%;
 }
 
-.cardpage__p {
+.cardpage__h2 {
     margin-top: 0;
+    text-align: center;
 }
 
-.cardpage__p.description {
-   white-space: pre-line;
+.text-align-left {
+    text-align: left;
+    margin: 0;
 }
 
 .cardpage__closebtn {
     align-self: flex-start;
     margin-bottom: 20px;
+    padding: 0;
     border: none;
     background-color: transparent;
     cursor: pointer;
@@ -62,49 +68,13 @@
         padding-bottom: 0px;
     }
 
-    .cardpage__body {
-        flex-direction: column;
-        text-align: justify;
-        overflow-y: scroll;
-    }
-
     .cardpage__card-vid {
-        height: auto;
-        margin-right: 0;
         max-width: 30%;
-        margin-bottom: 20px;
-    }
-
-    .cardpage__card-text {
-        font-size: 16px;
     }
 }
 
 @media (max-width: 425px) {
     .cardpage__card-vid {
         max-width: 50%;
-    }
-
-    .cardpage__card-text {
-        font-size: 16px;
-    }
-}
-
-@media (max-height: 425px) {
-    .cardpage__body {
-        align-items: flex-start;
-        flex-direction: row;
-        width: 100%;
-    }
-
-    .cardpage__card-vid {
-        height: inherit;
-        margin-right: 10px;
-        margin-bottom: 0;
-        padding: 10px;
-    }
-
-    .cardpage__card-text {
-        font-size: 16px;
     }
 }
