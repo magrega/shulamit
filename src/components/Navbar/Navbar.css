@@ -3,6 +3,7 @@
     justify-content: center;
     align-items: center;
     height: 70px;
+    padding-left: calc(100vw - 100%);
 }
 
 .navbar_list {
@@ -84,7 +85,7 @@
     .navbar__container {
         max-width: 750px;
         margin: 0 auto;
-        padding: 0 10px;
+        
         height: 60px;
         font-size: 20px;
         font-family: 'Cormorant Garamond', serif;
@@ -95,6 +96,7 @@
         display: flex;
         justify-content: space-between;
         flex-grow: 1;
+        padding: 0 10px;
     }
 
     .navbar__list {

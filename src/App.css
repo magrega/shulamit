@@ -14,10 +14,6 @@ body,
     height: 100%;
 }
 
-body {
-    padding-left: calc(100vw - 100%);
-}
-
 #root {
     display: flex;
     flex-direction: column;

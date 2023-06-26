@@ -1,5 +1,5 @@
-.container {
-    height: 100%;
+.container > * {
+    padding-left: calc(100vw - 100%);
 }
 
 .footer {
@@ -9,6 +9,7 @@
     justify-content: center;
     align-items: center;
     background-color: #242424;
+    padding-left: calc(100vw - 100%);
 }
 
 .socials-container__item {
