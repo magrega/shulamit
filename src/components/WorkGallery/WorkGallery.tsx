@@ -2,7 +2,7 @@ import { FC, useEffect, useState } from 'react';
 import cards from '../../assets/cards.json';
 import Loader from '../Loader/Loader';
 import 'animate.css';
-import './WorkGallery.css';
+// import './WorkGallery.css';
 import { Link } from 'react-router-dom';
 
 export type TCard = {

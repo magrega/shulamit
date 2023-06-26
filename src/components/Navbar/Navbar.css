@@ -19,7 +19,13 @@
 .navbar__a {
     color: #565656;
     text-decoration: none;
+    transition: all .3s;
 }
+
+.navbar__a:hover {
+    opacity: .7;
+}
+
 .navbar__a.active {
     opacity: .7;
 }

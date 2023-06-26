@@ -1,9 +1,8 @@
-import { FC, Suspense, useEffect, useState } from 'react';
-import { Await, Link, useLoaderData, defer } from 'react-router-dom';
-import getCardsData from '../../service/getCardsData';
+import { FC, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import cards from '../../assets/cards.json';
 import Loader from '../Loader/Loader';
 import './Gallery.css';
-import cards from '../../assets/cards.json';
 
 
 export interface ICard {
