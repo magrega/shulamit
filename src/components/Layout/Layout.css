@@ -1,13 +1,10 @@
 .footer {
-    height: 50px;
+    min-height: 50px;
+    margin-top: auto;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: #242424;
-}
-
-.socials-container {
-   
 }
 
 .socials-container__item {

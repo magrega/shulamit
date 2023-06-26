@@ -1,6 +1,6 @@
 import { FC, useEffect, useState } from 'react';
 import cards from '../../assets/cards.json';
-import CardModal from '../CardModal/CardModal';
+// import CardModal from '../CardModal/CardModal';
 import Loader from '../Loader/Loader';
 import 'animate.css';
 import './WorkGallery.css';
@@ -64,7 +64,7 @@ const WorkGallery: FC = () => {
                 {cardsArray.map((card: TCard) => <img key={card.id} src={require(`../../assets/img/cardBack.webp`)} alt={`Перевернутая карта`} className={`${shuffle ? 'gallery-item' : 'gallery-item animate__animated animate__shakeX'}`} onClick={() => showImage(card.id)} onLoad={onLoad} />)}
                 <img key={23} src={require(`../../assets/img/shuffle.png`)} alt={`Перемешать карты`} className="gallery-item shuffle-cards" onClick={handleShuffle} />
             </div>
-            <CardModal open={openModalCard} handleClose={handleClose} content={cardsArray[imageNum]} />
+            {/* <CardModal open={openModalCard} handleClose={handleClose} content={cardsArray[imageNum]} /> */}
         </>
     );
 };
