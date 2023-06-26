@@ -7,44 +7,8 @@
     padding-top: 0;
 }
 
-.cardpage__body {
-    text-align: justify;
-    white-space: pre-line;
-    margin-bottom: 10px;
-}
-
-.cardpage__video-container {
-    display: contents;
-}
-
-.cardpage__card-vid {
-    float: left;
-    width: 320px;
-    border-radius: 20px;
-    margin-right: 10px;
-}
-
-.cardpage__text-category {
-    font-weight: bold;
-}
-
-.cardpage__text-description {
-    text-align: justify;
-}
-
-.cardpage__h2 {
-    margin-top: 0;
-    text-align: center;
-}
-
-.text-align-left {
-    text-align: left;
-    margin: 0;
-}
 
 .cardpage__closebtn {
-    align-self: flex-start;
-    margin-bottom: 20px;
     padding: 0;
     border: none;
     background-color: transparent;
@@ -62,6 +26,41 @@
     margin-right: 5px;
 }
 
+.cardpage__h2 {
+    text-align: center;
+}
+
+.cardpage__body {
+    text-align: justify;
+    white-space: pre-line;
+    margin-bottom: 10px;
+}
+
+.cardpage__video-container {
+    /* for future work with video */
+    display: contents; 
+}
+
+.cardpage__card-vid {
+    float: left;
+    width: 320px;
+    border-radius: 20px;
+    margin-right: 10px;
+}
+
+.cardpage__text-category {
+    font-weight: bold;
+}
+
+.cardpage__text-description {
+    text-align: justify;
+}
+
+.text-align-left {
+    text-align: left;
+    margin: 0;
+}
+
 @media (max-width: 1000px) {
     .MuiBox-root.cardpage {
         padding: 0 10px;
@@ -70,6 +69,12 @@
 
     .cardpage__card-vid {
         max-width: 25%;
+    }
+}
+
+@media (max-width: 768px) {
+    .cardpage__card-vid {
+        max-width: 40%;
     }
 }
 
