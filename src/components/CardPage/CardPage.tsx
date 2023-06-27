@@ -1,6 +1,6 @@
 import { Box } from '@mui/material';
 import { FC } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import cards from '../../assets/cards.json';
 import './CardPage.css';
 
@@ -22,16 +22,14 @@ const CardPage: FC = () => {
         id && navigate(`/card/${+id - 1}`, { replace: true });
     }
 
-    if (!cards[index].totem) return null;
-
     return (
         <Box className='cardpage'>
-                <button className="cardpage__btn" onClick={goBack}>
-                    <span className='cardpage__closebtn-wrapper'>
-                        <img className='cardpage__closebtn-wrapper-img' src={require(`../../assets/icons/backArrow.svg`).default} alt="back arrow" />
-                        Назад
-                    </span>
-                </button>
+            <button className="cardpage__btn" onClick={goBack}>
+                <span className='cardpage__closebtn-wrapper'>
+                    <img className='cardpage__closebtn-wrapper-img' src={require(`../../assets/icons/backArrow.svg`).default} alt="back arrow" />
+                    Назад
+                </span>
+            </button>
             <div className="cardpage-buttons">
                 <button className={id && +id === 1 ? 'cardpage__btn inactive' : 'cardpage__btn'} onClick={goPrev}><img className='cardpage__prevbtn' src={require(`../../assets/icons/cardNextPrev.svg`).default} alt="Prev card" /></button>
                 <button className={id && +id === cards.length ? 'cardpage__btn inactive' : 'cardpage__btn'} onClick={goNext}><img className='cardpage__nextbtn' src={require(`../../assets/icons/cardNextPrev.svg`).default} alt="Next card" /></button>
