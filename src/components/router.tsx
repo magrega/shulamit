@@ -18,7 +18,7 @@ export const router = createBrowserRouter(createRoutesFromElements(
     />
     <Route
       path="/card/:id"
-      element={<CardPage />} errorElement={<Navigate to="/intro" replace />} />
-    {/* <Route path="*" element={<Navigate to="/intro" replace />} /> */}
+      element={<CardPage />}/>
+    <Route path="*" element={<Navigate to="/intro" replace />} />
   </Route>
 ))

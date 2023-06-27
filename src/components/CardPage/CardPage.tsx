@@ -1,12 +1,12 @@
 import { Box } from '@mui/material';
 import { FC } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams, Navigate } from 'react-router-dom';
 import cards from '../../assets/cards.json';
 import './CardPage.css';
 
 
 const CardPage: FC = () => {
-    const { id } = useParams();
+    const { id } = useParams() as { id: string };
 
     const index = Number(id) - 1;
 
@@ -14,13 +14,15 @@ const CardPage: FC = () => {
 
     const goBack = () => navigate(-1);
     const goNext = () => {
-        if (id && +id >= 22) return;
-        id && navigate(`/card/${+id + 1}`, { replace: true });
+        if (+id >= 22) return;
+        navigate(`/card/${+id + 1}`, { replace: true });
     }
     const goPrev = () => {
-        if (id && +id <= 1) return;
-        id && navigate(`/card/${+id - 1}`, { replace: true });
+        if (+id <= 1) return;
+        navigate(`/card/${+id - 1}`, { replace: true });
     }
+
+    if (cards[index] === undefined) return <Navigate to="/intro" replace />
 
     return (
         <Box className='cardpage'>
@@ -31,8 +33,8 @@ const CardPage: FC = () => {
                 </span>
             </button>
             <div className="cardpage-buttons">
-                <button className={id && +id === 1 ? 'cardpage__btn inactive' : 'cardpage__btn'} onClick={goPrev}><img className='cardpage__prevbtn' src={require(`../../assets/icons/cardNextPrev.svg`).default} alt="Prev card" /></button>
-                <button className={id && +id === cards.length ? 'cardpage__btn inactive' : 'cardpage__btn'} onClick={goNext}><img className='cardpage__nextbtn' src={require(`../../assets/icons/cardNextPrev.svg`).default} alt="Next card" /></button>
+                <button className={+id === 1 ? 'cardpage__btn inactive' : 'cardpage__btn'} onClick={goPrev}><img className='cardpage__prevbtn' src={require(`../../assets/icons/cardNextPrev.svg`).default} alt="Prev card" /></button>
+                <button className={+id === cards.length ? 'cardpage__btn inactive' : 'cardpage__btn'} onClick={goNext}><img className='cardpage__nextbtn' src={require(`../../assets/icons/cardNextPrev.svg`).default} alt="Next card" /></button>
             </div>
             <h2 className='cardpage__h2'>{`${cards[index].totem}`}</h2>
             <div className="cardpage__body">
