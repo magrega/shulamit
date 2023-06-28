@@ -2,7 +2,6 @@ import { FC, useEffect, useState } from 'react';
 import cards from '../../assets/cards.json';
 import Loader from '../Loader/Loader';
 import 'animate.css';
-// import './WorkGallery.css';
 import { Link } from 'react-router-dom';
 
 export type TCard = {
@@ -16,12 +15,12 @@ export type TCard = {
 }
 
 const WorkGallery: FC = () => {
-    const [cardsArray, setCardsArray] = useState([...cards]);
+    const [shuffle, setShuffle] = useState(true);
 
-    const [shuffle, setShuffle] = useState(false);
-
-    const handleShuffle = () => setShuffle(current => !current);
-
+    const handleShuffle = () => {
+        setShuffle(false);
+        setCardsArray(shuffleCards(cardsArray));
+    }
 
     const [imagesLoaded, setImagesLoaded] = useState(0);
     const [loading, setLoading] = useState(true);
@@ -33,39 +32,54 @@ const WorkGallery: FC = () => {
             let j = Math.floor(Math.random() * (i + 1));
             [tempArray[i], tempArray[j]] = [tempArray[j], tempArray[i]];
         }
-        setShuffle(false);
         return tempArray;
     }
 
+    const [cardsArray, setCardsArray] = useState([...cards]);
+
     useEffect(() => {
-        if (imagesLoaded === cardsArray.length) setLoading(false);
+        if (imagesLoaded === cardsArray.length * 2) setLoading(false);
         // eslint-disable-next-line
     }, [imagesLoaded]);
 
     useEffect(() => {
         setCardsArray(shuffleCards(cardsArray));
         // eslint-disable-next-line
-    }, [shuffle]);
+    }, []);
 
     return (
         <>
             {loading && <Loader />}
             <div className="gallery-container" style={{ display: loading ? "none" : "flex" }}>
                 {cardsArray.map((card: TCard) =>
-                    <Link key={card.id} style={{ display: 'contents' }} to={`/card/${card.id}`}>
-                        <img key={card.id}
-                            className={`${shuffle ? 'gallery-item' : 'gallery-item animate__animated animate__shakeX'}`}
-                            src={require(`../../assets/img/cardBack.webp`)}
-                            alt={`Перевернутая карта`}
-                            onLoad={onLoad} />
-                    </Link>
+                    <div className={`${shuffle ? 'gallery-item' : 'gallery-item animate__animated animate__shakeX'}`} key={card.id}>
+                        <div className='gallery-item__inner'>
+                            <div className="gallery-item__front">
+                                <img
+                                    className='gallery-item__pic'
+                                    src={require(`../../assets/img/cardBack.webp`)}
+                                    alt={`Перевернутая карта`}
+                                    onLoad={onLoad} />
+                            </div>
+                            <div className="gallery-item__back">
+                                <img
+                                    className="gallery-item__pic"
+                                    src={require(`../../assets/img/${card.id}.webp`)}
+                                    alt={`${card.totem}`}
+                                    onLoad={onLoad}
+                                />
+                            </div>
+                        </div>
+                    </div>
                 )}
+            </div>
+            <button className="shuffle-cards">
                 <img key={23}
-                    className="gallery-item shuffle-cards"
-                    src={require(`../../assets/img/shuffle.png`)}
+                    className='gallery-item__shuffle-img'
+                    src={require(`../../assets/icons/shuffle.png`)}
                     alt={`Перемешать карты`}
                     onClick={handleShuffle} />
-            </div>
+            </button>
         </>
     );
 };

@@ -27,14 +27,19 @@ const Gallery: FC = () => {
         <>
             {loading && <Loader />}
             <div className="gallery-container" style={{ display: loading ? "none" : "flex" }}>
-
                 {cards.map((card: ICard) =>
                     <Link key={card.id} style={{ display: 'contents' }} to={`/card/${card.id}`}>
-                        <img
-                            className="gallery-item"
-                            src={require(`../../assets/img/${card.id}.webp`)}
-                            alt={`${card.totem}`}
-                            onLoad={onImgLoad} />
+                        <div className='gallery-item'key={card.id}>
+                            <div className="gallery-item__inner no-rotate">
+                                <div className="gallery-item__front">
+                                    <img
+                                        className="gallery-item__pic"
+                                        src={require(`../../assets/img/${card.id}.webp`)}
+                                        alt={`${card.totem}`}
+                                        onLoad={onImgLoad} />
+                                </div>
+                            </div>
+                        </div>
                     </Link>
                 )}
             </div>
