@@ -2,17 +2,11 @@
     padding-left: calc(100vw - 100%);
 }
 
-#root {
-    position: relative;
-}
-
 header {
-    position: relative;
-    z-index: 1
+    z-index: 3;
 }
 
 main {
-    position: relative;
     z-index: 2;
 }
 
@@ -31,4 +25,6 @@ main {
     width: 32px;
     margin: 0 10px;
     vertical-align: sub;
+    border: 2px solid #e3ba64;
+    border-radius: 100%;
 }
