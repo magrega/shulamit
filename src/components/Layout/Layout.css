@@ -1,9 +1,19 @@
-.container > * {
+.container > *:not(.shuffle-cards) {
     padding-left: calc(100vw - 100%);
 }
 
-.container {
-    z-index: 3;
+#root {
+    position: relative;
+}
+
+header {
+    position: relative;
+    z-index: 1
+}
+
+main {
+    position: relative;
+    z-index: 2;
 }
 
 .footer {
