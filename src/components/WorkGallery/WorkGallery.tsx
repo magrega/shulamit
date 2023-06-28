@@ -19,7 +19,6 @@ const WorkGallery: FC = () => {
     const [cardsArray, setCardsArray] = useState([...cards]);
 
     const [shuffle, setShuffle] = useState(false);
-
     const handleShuffle = () => setShuffle(current => !current);
 
     const [openModalCard, setOpenModalCard] = useState(false);
@@ -31,7 +30,6 @@ const WorkGallery: FC = () => {
     const onLoad = () => setImagesLoaded(prev => prev + 1);
 
     const [imageNum, setImageNum] = useState(0);
-
     const showImage = (index: number) => {
         setImageNum(index);
         handleOpen();
