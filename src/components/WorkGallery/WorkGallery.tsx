@@ -1,9 +1,7 @@
+import 'animate.css';
 import { FC, useEffect, useState } from 'react';
 import cards from '../../assets/cards.json';
-import CardModal from '../CardModal/CardModal';
 import Loader from '../Loader/Loader';
-import 'animate.css';
-import './WorkGallery.css';
 
 export type TCard = {
     id: number,
@@ -16,24 +14,13 @@ export type TCard = {
 }
 
 const WorkGallery: FC = () => {
-    const [cardsArray, setCardsArray] = useState([...cards]);
+    const [shuffle, setShuffle] = useState(true);
 
-    const [shuffle, setShuffle] = useState(false);
     const handleShuffle = () => setShuffle(current => !current);
-
-    const [openModalCard, setOpenModalCard] = useState(false);
-    const handleOpen = () => setOpenModalCard(true);
-    const handleClose = () => setOpenModalCard(false);
 
     const [imagesLoaded, setImagesLoaded] = useState(0);
     const [loading, setLoading] = useState(true);
     const onLoad = () => setImagesLoaded(prev => prev + 1);
-
-    const [imageNum, setImageNum] = useState(0);
-    const showImage = (index: number) => {
-        setImageNum(index);
-        handleOpen();
-    }
 
     const shuffleCards = (array: TCard[]) => {
         const tempArray = [...array];
@@ -41,28 +28,54 @@ const WorkGallery: FC = () => {
             let j = Math.floor(Math.random() * (i + 1));
             [tempArray[i], tempArray[j]] = [tempArray[j], tempArray[i]];
         }
-        setShuffle(false);
         return tempArray;
     }
 
+    const [cardsArray, setCardsArray] = useState([...cards]);
+
     useEffect(() => {
-        if (imagesLoaded === cardsArray.length) setLoading(false);
+        if (imagesLoaded === cardsArray.length * 2) setLoading(false);
         // eslint-disable-next-line
     }, [imagesLoaded]);
 
     useEffect(() => {
         setCardsArray(shuffleCards(cardsArray));
         // eslint-disable-next-line
-    }, [shuffle]);
+    }, []);
 
     return (
         <>
             {loading && <Loader />}
             <div className="gallery-container" style={{ display: loading ? "none" : "flex" }}>
-                {cardsArray.map((card: TCard) => <img key={card.id} src={require(`../../assets/img/cardBack.webp`)} alt={`Перевернутая карта`} className={`${shuffle ? 'gallery-item' : 'gallery-item animate__animated animate__shakeX'}`} onClick={() => showImage(card.id)} onLoad={onLoad} />)}
-                <img key={23} src={require(`../../assets/img/shuffle.png`)} alt={`Перемешать карты`} className="gallery-item shuffle-cards" onClick={handleShuffle} />
+                {cardsArray.map((card: TCard) =>
+                    <div className={`${shuffle ? 'gallery-item' : 'gallery-item animate__animated animate__shakeX'}`} key={card.id}>
+                        <div className='gallery-item__inner'>
+                            <div className="gallery-item__front">
+                                <img
+                                    className='gallery-item__pic'
+                                    src={require(`../../assets/img/cardBack.webp`)}
+                                    alt={`Перевернутая карта`}
+                                    onLoad={onLoad} />
+                            </div>
+                            <div className="gallery-item__back">
+                                <img
+                                    className="gallery-item__pic"
+                                    src={require(`../../assets/img/${card.id}.webp`)}
+                                    alt={`${card.totem}`}
+                                    onLoad={onLoad}
+                                />
+                            </div>
+                        </div>
+                    </div>
+                )}
             </div>
-            <CardModal open={openModalCard} handleClose={handleClose} content={cardsArray[imageNum]} />
+                <button className="shuffle-cards">
+                    <img key={23}
+                        className='gallery-item__shuffle-img'
+                        src={require(`../../assets/icons/shuffle.png`)}
+                        alt={`Перемешать карты`}
+                        onClick={handleShuffle} />
+                </button>
         </>
     );
 };

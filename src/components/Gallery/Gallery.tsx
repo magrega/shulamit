@@ -1,10 +1,11 @@
 import { FC, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import cards from '../../assets/cards.json';
-import CardModal from '../CardModal/CardModal';
 import Loader from '../Loader/Loader';
 import './Gallery.css';
 
-export type TCard = {
+
+export interface ICard {
     id: number,
     totem: string,
     letter: string,
@@ -15,33 +16,33 @@ export type TCard = {
 }
 
 const Gallery: FC = () => {
-    const [openModalCard, setOpenModalCard] = useState(false);
-    const handleOpen = () => setOpenModalCard(true);
-    const handleClose = () => setOpenModalCard(false);
-
     const [imagesLoaded, setImagesLoaded] = useState(0);
     const [loading, setLoading] = useState(true);
-    const onLoad = () => setImagesLoaded(prev => prev + 1);
+    const onImgLoad = () => setImagesLoaded(prev => prev + 1);
 
-    const [imageNum, setImageNum] = useState(0);
+    // eslint-disable-next-line
+    useEffect(() => { if (imagesLoaded === 22) setLoading(false); }, [imagesLoaded]);
 
-    const showImage = (index: number) => {
-        setImageNum(index);
-        handleOpen();
-    }
-
-    useEffect(() => {
-        if (imagesLoaded === cards.length) setLoading(false);
-        // eslint-disable-next-line
-    }, [imagesLoaded]);
-  
     return (
         <>
             {loading && <Loader />}
             <div className="gallery-container" style={{ display: loading ? "none" : "flex" }}>
-                {cards.map((card: TCard) => <img key={card.id} src={require(`../../assets/img/${card.id}.webp`)} alt={`${card.totem}`} className="gallery-item" onClick={() => showImage(card.id)} onLoad={onLoad} />)}
+                {cards.map((card: ICard) =>
+                    <Link key={card.id} style={{ display: 'contents' }} to={`/card/${card.id}`}>
+                        <div className='gallery-item'key={card.id}>
+                            <div className="gallery-item__inner no-rotate">
+                                <div className="gallery-item__front">
+                                    <img
+                                        className="gallery-item__pic"
+                                        src={require(`../../assets/img/${card.id}.webp`)}
+                                        alt={`${card.totem}`}
+                                        onLoad={onImgLoad} />
+                                </div>
+                            </div>
+                        </div>
+                    </Link>
+                )}
             </div>
-            <CardModal open={openModalCard} handleClose={handleClose} content={cards[imageNum]} />
         </>
     );
 };

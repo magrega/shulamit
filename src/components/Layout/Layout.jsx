@@ -1,4 +1,4 @@
-import { Outlet } from 'react-router-dom';
+import { Outlet, ScrollRestoration } from 'react-router-dom';
 import Navbar from '../Navbar/Navbar';
 import './Layout.css';
 
@@ -11,6 +11,7 @@ const Layout = () => {
 
             <main className='container'>
                 <Outlet />
+                <ScrollRestoration />
             </main>
 
             <footer className='footer'>

@@ -1,13 +1,19 @@
+header {
+    z-index: 3;
+}
+
+main {
+    z-index: 2;
+}
+
 .footer {
-    height: 50px;
+    min-height: 50px;
+    margin-top: auto;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: #242424;
-}
-
-.socials-container {
-   
+    padding-left: calc(100vw - 100%);
 }
 
 .socials-container__item {
@@ -15,4 +21,6 @@
     width: 32px;
     margin: 0 10px;
     vertical-align: sub;
+    border: 2px solid #e3ba64;
+    border-radius: 100%;
 }
