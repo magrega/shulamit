@@ -1,6 +1,4 @@
 .MuiBox-root.cardpage {
-    flex-direction: column;
-    justify-content: center;
     margin: 0 auto;
     max-width: 750px;
     padding-top: 0;
@@ -116,6 +114,11 @@
 }
 
 @media (max-width: 768px) {
+    .MuiBox-root.cardpage {
+        padding: 0 10px;
+        padding-bottom: 0px;
+    }
+
     .cardpage__card-vid {
         max-width: 28%;
     }

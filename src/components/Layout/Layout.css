@@ -1,4 +1,4 @@
-.container > *:not(.shuffle-cards) {
+.container>*:not(.shuffle-cards) {
     padding-left: calc(100vw - 100%);
 }
 
