@@ -93,7 +93,9 @@
 }
 
 .gallery-item__shuffle-img:active {
-    box-shadow: none;
+    -webkit-box-shadow: 0px 0px 10px 1px rgba(34, 60, 80, 0.6);
+    -moz-box-shadow: 0px 0px 10px 1px rgba(34, 60, 80, 0.6);
+    box-shadow: 0px 0px 10px 1px rgba(34, 60, 80, 0.6);
 }
 
 .shuffle-cards {
