@@ -73,13 +73,13 @@ const WorkGallery: FC = () => {
                     </div>
                 )}
             </div>
-            <button className="shuffle-cards">
-                <img key={23}
-                    className='gallery-item__shuffle-img'
-                    src={require(`../../assets/icons/shuffle.png`)}
-                    alt={`Перемешать карты`}
-                    onClick={handleShuffle} />
-            </button>
+                <button className="shuffle-cards">
+                    <img key={23}
+                        className='gallery-item__shuffle-img'
+                        src={require(`../../assets/icons/shuffle.png`)}
+                        alt={`Перемешать карты`}
+                        onClick={handleShuffle} />
+                </button>
         </>
     );
 };
