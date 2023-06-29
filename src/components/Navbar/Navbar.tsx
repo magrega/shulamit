@@ -5,8 +5,8 @@ import './Navbar.css';
 const Navbar = () => {
     const [isActive, setIsActive] = useState(false);
 
-    const handleClick = () => { 
-        if (window.innerWidth < 870) setIsActive(current => !current); 
+    const handleClick = () => {
+        if (window.innerWidth < 870) setIsActive(current => !current);
     }
 
     useEffect(() => {
@@ -30,7 +30,7 @@ const Navbar = () => {
 
             </ul>
             <div className="navbar__mobile">
-                <span className='navbar__title'>shulanika.ru</span>
+                <span className='navbar__title'><a className='navbar__a' href="https://shulanika.ru/">shulanika.ru</a></span>
                 <div className={isActive ? 'navbar__burger active' : 'navbar__burger'} onClick={handleClick}>
                     <span></span>
                 </div>

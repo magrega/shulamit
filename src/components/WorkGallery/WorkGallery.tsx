@@ -14,9 +14,13 @@ export type TCard = {
 }
 
 const WorkGallery: FC = () => {
-    const [shuffle, setShuffle] = useState(true);
+    const addShuffle = () => {
+        document.querySelector('.gallery-container')?.classList.add('animate__shakeX');
+    }
 
-    const handleShuffle = () => setShuffle(current => !current);
+    const removeShuffle = () => {
+        document.querySelector('.gallery-container')?.classList.remove('animate__shakeX');
+    }
 
     const [imagesLoaded, setImagesLoaded] = useState(0);
     const [loading, setLoading] = useState(true);
@@ -46,9 +50,13 @@ const WorkGallery: FC = () => {
     return (
         <>
             {loading && <Loader />}
-            <div className="gallery-container" style={{ display: loading ? "none" : "flex" }}>
+            <div
+                className='gallery-container animate__animated'
+                style={{ display: loading ? "none" : "flex" }}
+                onAnimationEnd={removeShuffle}
+            >
                 {cardsArray.map((card: TCard) =>
-                    <div className={`${shuffle ? 'gallery-item' : 'gallery-item animate__animated animate__shakeX'}`} key={card.id}>
+                    <div className='gallery-item' key={card.id}>
                         <div className='gallery-item__inner'>
                             <div className="gallery-item__front">
                                 <img
@@ -69,13 +77,13 @@ const WorkGallery: FC = () => {
                     </div>
                 )}
             </div>
-                <button className="shuffle-cards">
-                    <img key={23}
-                        className='gallery-item__shuffle-img'
-                        src={require(`../../assets/icons/shuffle.png`)}
-                        alt={`Перемешать карты`}
-                        onClick={handleShuffle} />
-                </button>
+            <button className="shuffle-cards">
+                <img key={23}
+                    className='gallery-item__shuffle-img'
+                    src={require(`../../assets/icons/shuffle.png`)}
+                    alt={`Перемешать карты`}
+                    onClick={addShuffle} />
+            </button>
         </>
     );
 };
