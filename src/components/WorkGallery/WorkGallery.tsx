@@ -14,19 +14,27 @@ export type TCard = {
 }
 
 const WorkGallery: FC = () => {
+
+    const shuffleCards = (cardsArray: TCard[]) => {
+        setCardsArray(shuffleArray(cardsArray));
+    }
+
     const addShuffle = () => {
         document.querySelector('.gallery-container')?.classList.add('animate__shakeX');
+        document.querySelectorAll('.gallery-item__inner')?.forEach(item => item.classList.add('no-rotate'));
+        shuffleCards(cardsArray);
     }
 
     const removeShuffle = () => {
         document.querySelector('.gallery-container')?.classList.remove('animate__shakeX');
+        document.querySelectorAll('.gallery-item__inner')?.forEach(item => item.classList.remove('no-rotate'));
     }
 
     const [imagesLoaded, setImagesLoaded] = useState(0);
     const [loading, setLoading] = useState(true);
     const onLoad = () => setImagesLoaded(prev => prev + 1);
 
-    const shuffleCards = (array: TCard[]) => {
+    const shuffleArray = (array: TCard[]) => {
         const tempArray = [...array];
         for (let i = tempArray.length - 1; i > 0; i--) {
             let j = Math.floor(Math.random() * (i + 1));
@@ -43,7 +51,7 @@ const WorkGallery: FC = () => {
     }, [imagesLoaded]);
 
     useEffect(() => {
-        setCardsArray(shuffleCards(cardsArray));
+        shuffleCards(cardsArray);
         // eslint-disable-next-line
     }, []);
 

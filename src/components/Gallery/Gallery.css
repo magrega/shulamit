@@ -28,7 +28,8 @@
     transform: rotateY(180deg);
 }
 
-.gallery-item:hover .gallery-item__inner.no-rotate {
+.gallery-item__inner:hover.no-rotate {
+    transition: none;
     transform: none;
 }
 
@@ -36,7 +37,8 @@
 .gallery-item__back {
     border-radius: 10px;
     transition: all .3s;
-    -webkit-backface-visibility: hidden; /* Safari */
+    -webkit-backface-visibility: hidden;
+    /* Safari */
     backface-visibility: hidden;
 }
 
@@ -117,9 +119,10 @@
 }
 
 @media (max-width: 1000px) {
-    .gallery-container{
+    .gallery-container {
         padding: 0;
     }
+
     .gallery-item {
         max-width: 25%;
         height: auto;

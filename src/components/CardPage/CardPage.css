@@ -88,7 +88,7 @@
 
 .cardpage-buttons {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     flex-grow: 1;
     flex-wrap: wrap;
     align-content: flex-end;
@@ -106,7 +106,8 @@
 
 .cardpage__prevbtn,
 .cardpage__nextbtn {
-    height: 25px;
+    margin: 0 40px;
+    max-height: 25px;
 }
 
 @media (max-width: 1000px) {
