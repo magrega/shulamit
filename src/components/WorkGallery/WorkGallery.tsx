@@ -49,11 +49,9 @@ const WorkGallery: FC = () => {
         if (imagesLoaded === cardsArray.length * 2) setLoading(false);
         // eslint-disable-next-line
     }, [imagesLoaded]);
-
-    useEffect(() => {
-        shuffleCards(cardsArray);
-        // eslint-disable-next-line
-    }, []);
+    
+    // eslint-disable-next-line
+    useEffect(() => shuffleCards(cardsArray), []);
 
     return (
         <>
@@ -67,14 +65,14 @@ const WorkGallery: FC = () => {
                     <div className='gallery-item' key={card.id}>
                         <div className='gallery-item__inner'>
                             <div className="gallery-item__front">
-                                <img
+                                <img draggable={false}
                                     className='gallery-item__pic'
                                     src={require(`../../assets/img/cardBack.webp`)}
                                     alt={`Перевернутая карта`}
                                     onLoad={onLoad} />
                             </div>
                             <div className="gallery-item__back">
-                                <img
+                                <img draggable={false}
                                     className="gallery-item__pic"
                                     src={require(`../../assets/img/${card.id}.webp`)}
                                     alt={`${card.totem}`}

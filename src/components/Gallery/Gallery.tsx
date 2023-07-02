@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import cards from '../../assets/cards.json';
 import Loader from '../Loader/Loader';
 import './Gallery.css';
+import 'animate.css';
 
 
 export interface ICard {
