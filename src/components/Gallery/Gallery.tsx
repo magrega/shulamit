@@ -1,12 +1,13 @@
-import { FC, useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import cards from '../../assets/cards.json';
-import Loader from '../Loader/Loader';
-import './Gallery.css';
 import 'animate.css';
+import { FC, useEffect, useState } from 'react';
+import cards from '../../assets/cards.json';
+import Card from '../Card/Card';
+import Loader from '../Loader/Loader';
+import ShuffleButton from '../ShuffleButton/ShuffleButton';
+import './Gallery.css';
 
 
-export interface ICard {
+export interface TCardData {
     id: number,
     totem: string,
     letter: string,
@@ -16,34 +17,70 @@ export interface ICard {
     description: string
 }
 
-const Gallery: FC = () => {
+interface IGallery {
+    isCardBack: boolean;
+}
+
+const Gallery: FC<IGallery> = ({ isCardBack }) => {
+
+    const shuffleCards = (cardsArray: TCardData[]) => {
+        setCardsArray(shuffleArray(cardsArray));
+    }
+
+    const addShuffle = () => {
+        document.querySelector('.gallery-container')?.classList.add('animate__shakeX');
+        document.querySelectorAll('.gallery-item__inner')?.forEach(item => item.classList.add('card-lock'));
+        shuffleCards(cardsArray);
+    }
+
+    const removeShuffle = () => {
+        document.querySelector('.gallery-container')?.classList.remove('animate__shakeX');
+        document.querySelectorAll('.gallery-item__inner')?.forEach(item => item.classList.remove('card-lock'));
+    }
+
     const [imagesLoaded, setImagesLoaded] = useState(0);
     const [loading, setLoading] = useState(true);
     const onImgLoad = () => setImagesLoaded(prev => prev + 1);
 
+    const shuffleArray = (array: TCardData[]) => {
+        const tempArray = [...array];
+        for (let i = tempArray.length - 1; i > 0; i--) {
+            let j = Math.floor(Math.random() * (i + 1));
+            [tempArray[i], tempArray[j]] = [tempArray[j], tempArray[i]];
+        }
+        return tempArray;
+    }
+
+    const [cardsArray, setCardsArray] = useState([...cards]);
+
+    useEffect(() => {
+        if (imagesLoaded === cardsArray.length * 2) {
+            setLoading(false);
+            setImagesLoaded(0);
+        }
+        // eslint-disable-next-line
+    }, [imagesLoaded]);
+
     // eslint-disable-next-line
-    useEffect(() => { if (imagesLoaded === 22) setLoading(false); }, [imagesLoaded]);
+    useEffect(() => shuffleCards(cardsArray), []);
 
     return (
         <>
             {loading && <Loader />}
-            <div className="gallery-container" style={{ display: loading ? "none" : "flex" }}>
-                {cards.map((card: ICard) =>
-                    <Link key={card.id} style={{ display: 'contents' }} to={`/card/${card.id}`}>
-                        <div className='gallery-item'key={card.id}>
-                            <div className="gallery-item__inner no-rotate">
-                                <div className="gallery-item__front">
-                                    <img
-                                        className="gallery-item__pic"
-                                        src={require(`../../assets/img/${card.id}.webp`)}
-                                        alt={`${card.totem}`}
-                                        onLoad={onImgLoad} />
-                                </div>
-                            </div>
-                        </div>
-                    </Link>
-                )}
+
+            <div
+                className="gallery-container animate__animated"
+                style={{ display: loading ? "none" : "flex" }}
+                onAnimationEnd={removeShuffle}>
+
+                {isCardBack ?
+                    cardsArray.map((card: TCardData) => <Card key={card.id} card={card} onImgLoad={onImgLoad} isCardBack={isCardBack} />)
+                    :
+                    cards.map((card: TCardData) => <Card key={card.id + 'a'} card={card} onImgLoad={onImgLoad} isCardBack={isCardBack} />)
+                }
             </div>
+            {isCardBack && <ShuffleButton addShuffle={addShuffle} />}
+
         </>
     );
 };
