@@ -1,9 +1,9 @@
-import { Navigate, Route, createBrowserRouter, createRoutesFromElements } from 'react-router-dom';
+import { Navigate, Route, createHashRouter, createRoutesFromElements } from 'react-router-dom';
 import CardPage from './CardPage/CardPage';
 import Gallery from './Gallery/Gallery';
 import Layout from './Layout/Layout';
 
-export const router = createBrowserRouter(createRoutesFromElements(
+export const router = createHashRouter(createRoutesFromElements(
   <Route path='/' element={<Layout />}>
     <Route path='/intro' element={<Gallery isCardBack={false} />} />
     <Route path='/interact' element={<Gallery isCardBack={true} />} />
@@ -17,7 +17,7 @@ export const router = createBrowserRouter(createRoutesFromElements(
     />
     <Route
       path="/card/:id"
-      element={<CardPage />}/>
+      element={<CardPage />} />
     <Route path="*" element={<Navigate to="/intro" replace />} />
   </Route>
 ))
