@@ -22,8 +22,8 @@
     transform: rotateY(0deg);
 }
 
-.gallery-item__inner.card-lock,
-.gallery-item__inner:hover.card-lock {
+.gallery-item.card-lock .gallery-item__inner.rotate,
+.gallery-item:hover.card-lock .gallery-item__inner.rotate {
     transform: rotateY(180deg);
     transition: none;
 }
@@ -59,6 +59,7 @@
 }
 
 .gallery-item__front:hover,
+.gallery-item__inner.rotate .gallery-item__front,
 .gallery-item__back:hover {
     -webkit-box-shadow: 0px 0px 8px 1px rgba(34, 60, 80, 0.4);
     -moz-box-shadow: 0px 0px 8px 1px rgba(34, 60, 80, 0.4);

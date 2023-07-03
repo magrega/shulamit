@@ -92,6 +92,7 @@
     flex-grow: 1;
     flex-wrap: wrap;
     align-content: flex-end;
+    padding-left: calc(100vw - 100%);   
 }
 
 .cardpage__prevbtn {
@@ -106,8 +107,8 @@
 
 .cardpage__prevbtn,
 .cardpage__nextbtn {
-    margin: 0 40px;
     max-height: 25px;
+    margin: 0 42px;
 }
 
 @media (max-width: 1000px) {

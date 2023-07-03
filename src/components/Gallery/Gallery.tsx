@@ -29,13 +29,13 @@ const Gallery: FC<IGallery> = ({ isCardBack }) => {
 
     const addShuffle = () => {
         document.querySelector('.gallery-container')?.classList.add('animate__shakeX');
-        document.querySelectorAll('.gallery-item__inner')?.forEach(item => item.classList.add('card-lock'));
+        document.querySelectorAll('.gallery-item')?.forEach(item => item.classList.add('card-lock'));
         shuffleCards(cardsArray);
     }
 
     const removeShuffle = () => {
         document.querySelector('.gallery-container')?.classList.remove('animate__shakeX');
-        document.querySelectorAll('.gallery-item__inner')?.forEach(item => item.classList.remove('card-lock'));
+        document.querySelectorAll('.gallery-item')?.forEach(item => item.classList.remove('card-lock'));
     }
 
     const [imagesLoaded, setImagesLoaded] = useState(0);
