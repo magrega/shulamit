@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/shulamit/static/css/main.60f65a01.css",
-    "main.js": "/shulamit/static/js/main.355667dd.js",
+    "main.js": "/shulamit/static/js/main.0790d9f6.js",
     "static/media/22.mp4": "/shulamit/static/media/22.80074ed6b431266a76fe.mp4",
     "static/media/4.mp4": "/shulamit/static/media/4.a15777ef44f2692af1df.mp4",
     "static/media/3.mp4": "/shulamit/static/media/3.5d598493aafaa4e3df79.mp4",
@@ -54,10 +54,10 @@
     "static/media/cardNextPrev.svg": "/shulamit/static/media/cardNextPrev.ecc4ed45367f72ad91a5f50d186f45be.svg",
     "index.html": "/shulamit/index.html",
     "main.60f65a01.css.map": "/shulamit/static/css/main.60f65a01.css.map",
-    "main.355667dd.js.map": "/shulamit/static/js/main.355667dd.js.map"
+    "main.0790d9f6.js.map": "/shulamit/static/js/main.0790d9f6.js.map"
   },
   "entrypoints": [
     "static/css/main.60f65a01.css",
-    "static/js/main.355667dd.js"
+    "static/js/main.0790d9f6.js"
   ]
 }
