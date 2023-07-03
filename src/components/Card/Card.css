@@ -18,7 +18,7 @@
     transform-style: preserve-3d
 }
 
-.gallery-item__inner:hover.rotate {
+.gallery-item:hover .gallery-item__inner.rotate {
     transform: rotateY(0deg);
 }
 
