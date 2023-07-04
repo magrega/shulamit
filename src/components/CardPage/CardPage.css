@@ -46,11 +46,11 @@
 .cardpage__body {
     text-align: justify;
     white-space: pre-line;
+    margin: 0 10px;
     margin-bottom: 20px;
 }
 
-.cardpage__video-container {
-    /* for future work with video */
+.video-container {
     display: contents;
 }
 
@@ -64,6 +64,15 @@
     -moz-box-shadow: 0px 5px 10px 3px rgba(34, 60, 80, 0.23);
     box-shadow: 0px 5px 10px 3px rgba(34, 60, 80, 0.23);
     transition: all .3s;
+    object-fit: cover;
+
+    background: transparent url('../../assets/img/cardBack.webp') no-repeat 0 0;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-clip: content-box;
+
 }
 
 .cardpage__card-vid:hover {
@@ -92,7 +101,7 @@
     flex-grow: 1;
     flex-wrap: wrap;
     align-content: flex-end;
-    padding-left: calc(100vw - 100%);   
+    padding-left: calc(100vw - 100%);
 }
 
 .cardpage__prevbtn {

@@ -34,13 +34,15 @@ const CardPage: FC = () => {
                 </button>
                 <h2 className='cardpage__h2'>{`${cards[index].totem}`}</h2>
                 <div className="cardpage__body">
-                    <video className="cardpage__card-vid"
-                        poster={require(`../../assets/img/${id}.webp`)}
-                        autoPlay
-                        loop
-                        playsInline
-                        muted
-                        src={require(`../../assets/video/${id}.mp4`)} />
+                    <div className="video-container">
+                        <video className="cardpage__card-vid"
+                            poster={require(`../../assets/img/cardBack.webp`)}
+                            autoPlay
+                            loop
+                            playsInline
+                            muted
+                            src={require(`../../assets/video/${id}.mp4`)} />
+                    </div>
                     <p className="cardpage__text"><span className='cardpage__text-category'>Буква Иврита: </span>{`${cards[index].letter}`}</p>
                     <p className="cardpage__text"><span className='cardpage__text-category'>Значение: </span>{`${cards[index].meaning}`}</p>
                     <p className="cardpage__text"><span className='cardpage__text-category'>Элемент: </span>{`${cards[index].element}`}</p>
