@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/shulamit/static/css/main.b45b8a26.css",
+    "main.css": "/shulamit/static/css/main.a8a58617.css",
     "main.js": "/shulamit/static/js/main.02626afa.js",
     "static/media/22.mp4": "/shulamit/static/media/22.80074ed6b431266a76fe.mp4",
     "static/media/4.mp4": "/shulamit/static/media/4.a15777ef44f2692af1df.mp4",
@@ -53,11 +53,11 @@
     "index.html": "/shulamit/index.html",
     "static/media/backArrow.svg": "/shulamit/static/media/backArrow.6952a53388a5f6cc00fae074688ef841.svg",
     "static/media/cardNextPrev.svg": "/shulamit/static/media/cardNextPrev.ecc4ed45367f72ad91a5f50d186f45be.svg",
-    "main.b45b8a26.css.map": "/shulamit/static/css/main.b45b8a26.css.map",
+    "main.a8a58617.css.map": "/shulamit/static/css/main.a8a58617.css.map",
     "main.02626afa.js.map": "/shulamit/static/js/main.02626afa.js.map"
   },
   "entrypoints": [
-    "static/css/main.b45b8a26.css",
+    "static/css/main.a8a58617.css",
     "static/js/main.02626afa.js"
   ]
 }
