@@ -36,7 +36,6 @@ const CardPage: FC = () => {
                 <div className="cardpage__body">
                     <div className="video-container">
                         <video className="cardpage__card-vid"
-                            poster={require(`../../assets/img/cardBack.webp`)}
                             autoPlay
                             loop
                             playsInline
