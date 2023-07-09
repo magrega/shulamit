@@ -13,9 +13,3 @@
     user-select: none;
     /* Standard syntax */
 }
-
-@media (max-width: 1000px) {
-    .gallery-container {
-        padding: 0;
-    }
-}
