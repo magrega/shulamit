@@ -21,6 +21,10 @@ const CardPage: FC = () => {
         navigate(`/card/${idNum - 1}`, { replace: true });
     }
 
+    const addPulseClass = () => document.querySelector('.cardpage__card-vid')?.classList.add('pulse-video');
+
+    const removePulseClass = () => document.querySelector('.cardpage__card-vid')?.classList.remove('pulse-video');
+
     if (cards[index] === undefined) return <Navigate to="/intro" replace />
 
     return (
@@ -35,7 +39,7 @@ const CardPage: FC = () => {
                 <h2 className='cardpage__h2'>{`${cards[index].totem}`}</h2>
                 <div className="cardpage__body">
                     <div className="video-container">
-                        <video className="cardpage__card-vid"
+                        <video onLoadStart={addPulseClass} onPlaying={removePulseClass} className="cardpage__card-vid pulse-video"
                             poster={require(`../../assets/img/cardBack.webp`)}
                             autoPlay
                             loop

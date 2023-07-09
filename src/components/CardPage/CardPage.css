@@ -67,6 +67,20 @@
     object-fit: cover;
 }
 
+.cardpage__card-vid.pulse-video {
+    animation: 1s infinite alternate pulse-video;
+}
+
+@keyframes pulse-video {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: .5;
+    }
+}
+
 .cardpage__card-vid:hover {
     -webkit-box-shadow: 0px 5px 10px 3px rgba(34, 60, 80, 0.6);
     -moz-box-shadow: 0px 5px 10px 3px rgba(34, 60, 80, 0.6);
