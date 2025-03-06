@@ -1,4 +1,5 @@
-import { Outlet, ScrollRestoration } from "react-router-dom";
+import { Outlet } from "react-router";
+import { code, instagram, telegram, youtube } from "../../assets/icons";
 import Navbar from "../Navbar/Navbar";
 import "./Layout.css";
 
@@ -11,7 +12,6 @@ const Layout = () => {
 
       <main className="container">
         <Outlet />
-        <ScrollRestoration />
       </main>
 
       <footer className="footer">
@@ -19,30 +19,26 @@ const Layout = () => {
           <a href="https://www.instagram.com/shulanika/">
             <img
               className="socials-container__item"
-              src={require("../../assets/icons/instagram.png")}
+              src={instagram}
               alt="insta"
             />
           </a>
           <a href="https://t.me/nikashulanika">
             <img
               className="socials-container__item"
-              src={require("../../assets/icons/telegram.png")}
+              src={telegram}
               alt="telegram"
             />
           </a>
           <a href="https://www.youtube.com/@shulanika">
             <img
               className="socials-container__item"
-              src={require("../../assets/icons/youtube.png")}
+              src={youtube}
               alt="youtube"
             />
           </a>
           <a href="https://metabroadcast.ru">
-            <img
-              className="socials-container__item"
-              src={require("../../assets/icons/code.png")}
-              alt="made by"
-            />
+            <img className="socials-container__item" src={code} alt="made by" />
           </a>
         </div>
       </footer>

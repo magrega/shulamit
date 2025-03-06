@@ -1,3 +1,4 @@
+import { shuffle } from "@/assets/icons";
 import { FC } from "react";
 import "./ShuffleButton.css";
 
@@ -12,7 +13,7 @@ const ShuffleButton: FC<IShuffleButton> = ({ addShuffle }) => {
         key={23}
         draggable={false}
         className="gallery-item__shuffle-img"
-        src={require(`../../assets/icons/shuffle.png`)}
+        src={shuffle}
         alt={`Перемешать карты`}
         onClick={addShuffle}
       />

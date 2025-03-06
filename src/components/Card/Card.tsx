@@ -1,15 +1,16 @@
 import { FC } from "react";
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
+import { cardBack, imagesArray } from "../../assets/img";
 import { TCardData } from "../Gallery/Gallery";
 import "./Card.css";
 
 interface ICard {
   card: TCardData;
   onImgLoad: () => void;
-  isCardBack: boolean;
+  isCardBack?: boolean;
 }
 
-const Card: FC<ICard> = ({ card, onImgLoad, isCardBack }) => {
+const Card: FC<ICard> = ({ card, onImgLoad, isCardBack = false }) => {
   return (
     <div className="gallery-item">
       <div
@@ -24,7 +25,7 @@ const Card: FC<ICard> = ({ card, onImgLoad, isCardBack }) => {
             <img
               draggable={false}
               className="gallery-item__pic"
-              src={require(`../../assets/img/${card.id}.webp`)}
+              src={imagesArray[card.id]}
               alt={`${card.totem}`}
               onLoad={onImgLoad}
             />
@@ -34,7 +35,7 @@ const Card: FC<ICard> = ({ card, onImgLoad, isCardBack }) => {
           <img
             draggable={false}
             className="gallery-item__pic"
-            src={require(`../../assets/img/cardBack.webp`)}
+            src={cardBack}
             alt={`Перевернутая карта`}
             onLoad={onImgLoad}
           />

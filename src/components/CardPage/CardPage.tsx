@@ -1,12 +1,14 @@
+import cards from "@/assets/cards.json";
+import { backArrow, cardNextPrev } from "@/assets/icons";
+import { cardBack } from "@/assets/img";
+import { videosArray } from "@/assets/video";
 import { FC } from "react";
-import { Navigate, useNavigate, useParams } from "react-router-dom";
-import cards from "../../assets/cards.json";
+import { Navigate, useNavigate, useParams } from "react-router";
 import "./CardPage.css";
 
 const CardPage: FC = () => {
-  const { id } = useParams() as { id: string };
+  const { id } = useParams();
   const idNum = Number(id);
-  const index = idNum - 1;
 
   const navigate = useNavigate();
 
@@ -28,7 +30,7 @@ const CardPage: FC = () => {
       .querySelector(".cardpage__card-vid")
       ?.classList.remove("pulse-video");
 
-  if (cards[index] === undefined) return <Navigate to="/intro" replace />;
+  if (cards[idNum] === undefined) return <Navigate to="/intro" replace />;
 
   return (
     <>
@@ -37,46 +39,46 @@ const CardPage: FC = () => {
           <span className="cardpage__closebtn-wrapper">
             <img
               className="cardpage__closebtn-wrapper-img"
-              src={require(`../../assets/icons/backArrow.svg`).default}
+              src={backArrow}
               alt="back arrow"
             />
             Назад
           </span>
         </button>
-        <h2 className="cardpage__h2">{`${cards[index].totem}`}</h2>
+        <h2 className="cardpage__h2">{`${cards[idNum].totem}`}</h2>
         <div className="cardpage__body">
           <div className="video-container">
             <video
               onLoadStart={addPulseClass}
               onPlaying={removePulseClass}
               className="cardpage__card-vid pulse-video"
-              poster={require(`../../assets/img/cardBack.webp`)}
+              poster={cardBack}
               autoPlay
               loop
               playsInline
               muted
-              src={require(`../../assets/video/${id}.mp4`)}
+              src={videosArray[idNum]}
             />
           </div>
           <p className="cardpage__text">
             <span className="cardpage__text-category">Буква Иврита: </span>
-            {`${cards[index].letter}`}
+            {`${cards[idNum].letter}`}
           </p>
           <p className="cardpage__text">
             <span className="cardpage__text-category">Значение: </span>
-            {`${cards[index].meaning}`}
+            {`${cards[idNum].meaning}`}
           </p>
           <p className="cardpage__text">
             <span className="cardpage__text-category">Элемент: </span>
-            {`${cards[index].element}`}
+            {`${cards[idNum].element}`}
           </p>
           <p className="cardpage__text">
             <span className="cardpage__text-category">Символы: </span>
-            {`${cards[index].symbols}`}
+            {`${cards[idNum].symbols}`}
           </p>
           <span className="cardpage__text-description">
             <span className="cardpage__text-category">Описание: </span>
-            {`${cards[index].description}`}
+            {`${cards[idNum].description}`}
           </span>
         </div>
       </div>
@@ -87,7 +89,7 @@ const CardPage: FC = () => {
         >
           <img
             className="cardpage__prevbtn"
-            src={require(`../../assets/icons/cardNextPrev.svg`).default}
+            src={cardNextPrev}
             alt="Prev card"
           />
         </button>
@@ -99,7 +101,7 @@ const CardPage: FC = () => {
         >
           <img
             className="cardpage__nextbtn"
-            src={require(`../../assets/icons/cardNextPrev.svg`).default}
+            src={cardNextPrev}
             alt="Next card"
           />
         </button>

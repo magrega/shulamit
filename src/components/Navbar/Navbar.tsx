@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
 import "./Navbar.css";
+import { NavLink } from "react-router";
 
 const Navbar = () => {
   const [isActive, setIsActive] = useState(false);

@@ -53,7 +53,7 @@ const Gallery: FC<IGallery> = ({ isCardBack }) => {
   const shuffleArray = (array: TCardData[]) => {
     const tempArray = [...array];
     for (let i = tempArray.length - 1; i > 0; i--) {
-      let j = Math.floor(Math.random() * (i + 1));
+      const j = Math.floor(Math.random() * (i + 1));
       [tempArray[i], tempArray[j]] = [tempArray[j], tempArray[i]];
     }
     return tempArray;
@@ -83,16 +83,11 @@ const Gallery: FC<IGallery> = ({ isCardBack }) => {
                 key={card.id}
                 card={card}
                 onImgLoad={onImgLoad}
-                isCardBack={isCardBack}
+                isCardBack
               />
             ))
           : cards.map((card: TCardData) => (
-              <Card
-                key={card.id + "a"}
-                card={card}
-                onImgLoad={onImgLoad}
-                isCardBack={isCardBack}
-              />
+              <Card key={card.id + "a"} card={card} onImgLoad={onImgLoad} />
             ))}
       </div>
       {isCardBack && <ShuffleButton addShuffle={addShuffle} />}
