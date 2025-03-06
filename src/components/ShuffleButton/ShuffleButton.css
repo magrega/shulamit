@@ -1,51 +1,51 @@
 .gallery-item__shuffle-img {
-    max-width: 100%;
-    height: auto;
-    padding: 5px;
-    background-color: black;
-    border-radius: 20%;
-    border: 2px solid #e3ba64;
-    -webkit-box-shadow: 0px 0px 10px 5px rgba(34, 60, 80, 0.6);
-    -moz-box-shadow: 0px 0px 10px 5px rgba(34, 60, 80, 0.6);
-    box-shadow: 0px 0px 10px 5px rgba(34, 60, 80, 0.6);
-    transition: all .3s;
+  max-width: 100%;
+  height: auto;
+  padding: 5px;
+  background-color: black;
+  border-radius: 20%;
+  border: 2px solid #e3ba64;
+  -webkit-box-shadow: 0px 0px 10px 5px rgba(34, 60, 80, 0.6);
+  -moz-box-shadow: 0px 0px 10px 5px rgba(34, 60, 80, 0.6);
+  box-shadow: 0px 0px 10px 5px rgba(34, 60, 80, 0.6);
+  transition: all 0.3s;
 }
 
 .gallery-item__shuffle-img:hover {
-    filter: brightness(50%);
+  filter: brightness(50%);
 }
 
 .gallery-item__shuffle-img:active {
-    -webkit-box-shadow: 0px 0px 10px 1px rgba(34, 60, 80, 0.6);
-    -moz-box-shadow: 0px 0px 10px 1px rgba(34, 60, 80, 0.6);
-    box-shadow: 0px 0px 10px 1px rgba(34, 60, 80, 0.6);
+  -webkit-box-shadow: 0px 0px 10px 1px rgba(34, 60, 80, 0.6);
+  -moz-box-shadow: 0px 0px 10px 1px rgba(34, 60, 80, 0.6);
+  box-shadow: 0px 0px 10px 1px rgba(34, 60, 80, 0.6);
 }
 
 .shuffle-cards {
-    max-height: 80px;
-    max-width: 80px;
-    min-height: 60px;
-    min-width: 60px;
-    position: fixed;
-    left: 5%;
-    bottom: 5%;
-    width: 5%;
-    border: 0;
-    background-color: transparent;
-    transition: all .2s;
-    animation-name: appearShuffle;
-    animation-duration: .7s;
+  max-height: 80px;
+  max-width: 80px;
+  min-height: 60px;
+  min-width: 60px;
+  position: fixed;
+  left: 5%;
+  bottom: 5%;
+  width: 5%;
+  border: 0;
+  background-color: transparent;
+  transition: all 0.2s;
+  animation-name: appearShuffle;
+  animation-duration: 0.7s;
 }
 
 .shuffle-cards:active {
-    bottom: calc(5% - 4px);
+  bottom: calc(5% - 4px);
 }
 
 @keyframes appearShuffle {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
