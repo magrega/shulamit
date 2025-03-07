@@ -4,7 +4,7 @@ import { cardBack } from "@/assets/img";
 import { videosArray } from "@/assets/video";
 import { FC } from "react";
 import { Navigate, useNavigate, useParams } from "react-router";
-import "./CardPage.css";
+import styles from "./CardPage.module.css";
 
 const CardPage: FC = () => {
   const { id } = useParams();
@@ -23,35 +23,37 @@ const CardPage: FC = () => {
   };
 
   const addPulseClass = () =>
-    document.querySelector(".cardpage__card-vid")?.classList.add("pulse-video");
+    document
+      .querySelector(`.${styles.cardpageCardVid}`)
+      ?.classList.add(styles.pulseVideo);
 
   const removePulseClass = () =>
     document
-      .querySelector(".cardpage__card-vid")
-      ?.classList.remove("pulse-video");
+      .querySelector(`.${styles.cardpageCardVid}`)
+      ?.classList.remove(styles.pulseVideo);
 
   if (cards[idNum] === undefined) return <Navigate to="/intro" replace />;
 
   return (
     <>
-      <div className="cardpage">
-        <button className="cardpage__btn" onClick={goBack}>
-          <span className="cardpage__closebtn-wrapper">
+      <div className={styles.cardpage}>
+        <button className={styles.cardpageBtn} onClick={goBack}>
+          <span className={styles.cardpageClosebtnWrapper}>
             <img
-              className="cardpage__closebtn-wrapper-img"
+              className={styles.cardpageClosebtnWrapperImg}
               src={backArrow}
               alt="back arrow"
             />
             Назад
           </span>
         </button>
-        <h2 className="cardpage__h2">{`${cards[idNum].totem}`}</h2>
-        <div className="cardpage__body">
-          <div className="video-container">
+        <h2 className={styles.cardpageH2}>{`${cards[idNum].totem}`}</h2>
+        <div className={styles.cardpageBody}>
+          <div className={styles.videoContainer}>
             <video
               onLoadStart={addPulseClass}
               onPlaying={removePulseClass}
-              className="cardpage__card-vid pulse-video"
+              className={`${styles.cardpageCardVid} ${styles.pulseVideo}`}
               poster={cardBack}
               autoPlay
               loop
@@ -60,47 +62,53 @@ const CardPage: FC = () => {
               src={videosArray[idNum]}
             />
           </div>
-          <p className="cardpage__text">
-            <span className="cardpage__text-category">Буква Иврита: </span>
+          <p className={styles.cardpageText}>
+            <span className={styles.cardpageTextCategory}>Буква Иврита: </span>
             {`${cards[idNum].letter}`}
           </p>
-          <p className="cardpage__text">
-            <span className="cardpage__text-category">Значение: </span>
+          <p className={styles.cardpageText}>
+            <span className={styles.cardpageTextCategory}>Значение: </span>
             {`${cards[idNum].meaning}`}
           </p>
-          <p className="cardpage__text">
-            <span className="cardpage__text-category">Элемент: </span>
+          <p className={styles.cardpageText}>
+            <span className={styles.cardpageTextCategory}>Элемент: </span>
             {`${cards[idNum].element}`}
           </p>
-          <p className="cardpage__text">
-            <span className="cardpage__text-category">Символы: </span>
+          <p className={styles.cardpageText}>
+            <span className={styles.cardpageTextCategory}>Символы: </span>
             {`${cards[idNum].symbols}`}
           </p>
-          <span className="cardpage__text-description">
-            <span className="cardpage__text-category">Описание: </span>
+          <span className={styles.cardpageTextDescription}>
+            <span className={styles.cardpageTextCategory}>Описание: </span>
             {`${cards[idNum].description}`}
           </span>
         </div>
       </div>
-      <div className="cardpage-buttons">
+      <div className={styles.cardpageButtons}>
         <button
-          className={idNum === 1 ? "cardpage__btn inactive" : "cardpage__btn"}
+          className={
+            idNum === 1
+              ? `${styles.cardpageBtn}${styles.inactive}`
+              : styles.cardpageBtn
+          }
           onClick={goPrev}
         >
           <img
-            className="cardpage__prevbtn"
+            className={styles.cardpagePrevbtn}
             src={cardNextPrev}
             alt="Prev card"
           />
         </button>
         <button
           className={
-            idNum === cards.length ? "cardpage__btn inactive" : "cardpage__btn"
+            idNum === cards.length
+              ? `${styles.cardpageBtn}${styles.inactive}`
+              : styles.cardpageBtn
           }
           onClick={goNext}
         >
           <img
-            className="cardpage__nextbtn"
+            className={styles.cardpageNextbtn}
             src={cardNextPrev}
             alt="Next card"
           />

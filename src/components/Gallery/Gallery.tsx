@@ -1,10 +1,10 @@
+import cards from "@assets/cards.json";
 import "animate.css";
 import { FC, useEffect, useState } from "react";
-import cards from "../../assets/cards.json";
 import Card from "../Card/Card";
 import Loader from "../Loader/Loader";
 import ShuffleButton from "../ShuffleButton/ShuffleButton";
-import "./Gallery.css";
+import styles from "./Gallery.module.css";
 
 export interface TCardData {
   id: number;
@@ -21,7 +21,7 @@ interface IGallery {
 }
 
 const Gallery: FC<IGallery> = ({ isCardBack }) => {
-  const [cardsArray, setCardsArray] = useState([...cards]);
+  const [cardsArray, setCardsArray] = useState(cards);
   const [imagesLoaded, setImagesLoaded] = useState(0);
   const [loading, setLoading] = useState(true);
 
@@ -33,30 +33,33 @@ const Gallery: FC<IGallery> = ({ isCardBack }) => {
 
   const addShuffle = () => {
     document
-      .querySelector(".gallery-container")
+      .querySelector(`.${styles.galleryContainer}`)
       ?.classList.add("animate__shakeX");
     document
       .querySelectorAll(".gallery-item")
-      ?.forEach((item) => item.classList.add("card-lock"));
+      ?.forEach((item) => item.classList.add(styles.cardLock));
     shuffleCards(cardsArray);
   };
 
   const removeShuffle = () => {
     document
-      .querySelector(".gallery-container")
+      .querySelector(`.${styles.galleryContainer}`)
       ?.classList.remove("animate__shakeX");
     document
       .querySelectorAll(".gallery-item")
-      ?.forEach((item) => item.classList.remove("card-lock"));
+      ?.forEach((item) => item.classList.remove(styles.cardLock));
   };
 
   const shuffleArray = (array: TCardData[]) => {
-    const tempArray = [...array];
-    for (let i = tempArray.length - 1; i > 0; i--) {
+    const shuffledArray = [...array];
+    for (let i = shuffledArray.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
-      [tempArray[i], tempArray[j]] = [tempArray[j], tempArray[i]];
+      [shuffledArray[i], shuffledArray[j]] = [
+        shuffledArray[j],
+        shuffledArray[i],
+      ];
     }
-    return tempArray;
+    return shuffledArray;
   };
 
   useEffect(() => {
@@ -73,7 +76,7 @@ const Gallery: FC<IGallery> = ({ isCardBack }) => {
       {loading && <Loader />}
 
       <div
-        className="gallery-container animate__animated"
+        className={`${styles.galleryContainer} animate__animated`}
         style={{ display: loading ? "none" : "flex" }}
         onAnimationEnd={removeShuffle}
       >

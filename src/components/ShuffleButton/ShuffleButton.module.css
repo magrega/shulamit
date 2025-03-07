@@ -1,4 +1,4 @@
-.gallery-item__shuffle-img {
+.gallery-item-shuffle-img {
   max-width: 100%;
   height: auto;
   padding: 5px;
@@ -11,11 +11,11 @@
   transition: all 0.3s;
 }
 
-.gallery-item__shuffle-img:hover {
+.gallery-item-shuffle-img:hover {
   filter: brightness(50%);
 }
 
-.gallery-item__shuffle-img:active {
+.gallery-item-shuffle-img:active {
   -webkit-box-shadow: 0px 0px 10px 1px rgba(34, 60, 80, 0.6);
   -moz-box-shadow: 0px 0px 10px 1px rgba(34, 60, 80, 0.6);
   box-shadow: 0px 0px 10px 1px rgba(34, 60, 80, 0.6);

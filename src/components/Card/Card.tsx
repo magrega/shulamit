@@ -2,7 +2,8 @@ import { FC } from "react";
 import { Link } from "react-router";
 import { cardBack, imagesArray } from "../../assets/img";
 import { TCardData } from "../Gallery/Gallery";
-import "./Card.css";
+import styles from "./Card.module.css";
+import "./CardLock.css";
 
 interface ICard {
   card: TCardData;
@@ -12,29 +13,29 @@ interface ICard {
 
 const Card: FC<ICard> = ({ card, onImgLoad, isCardBack = false }) => {
   return (
-    <div className="gallery-item">
+    <div className={`${styles.galleryItem} gallery-item`}>
       <div
         className={
           isCardBack
-            ? "gallery-item__inner rotate"
-            : "gallery-item__inner no-rotate"
+            ? `${styles.galleryItemInner} ${styles.rotate}`
+            : `${styles.galleryItemInner}`
         }
       >
-        <div className="gallery-item__front">
+        <div className={styles.galleryItemFront}>
           <Link style={{ display: "contents" }} to={`/card/${card.id}`}>
             <img
               draggable={false}
-              className="gallery-item__pic"
+              className={styles.galleryItemPic}
               src={imagesArray[card.id]}
               alt={`${card.totem}`}
               onLoad={onImgLoad}
             />
           </Link>
         </div>
-        <div className="gallery-item__back">
+        <div className={styles.galleryItemBack}>
           <img
             draggable={false}
-            className="gallery-item__pic"
+            className={styles.galleryItemPic}
             src={cardBack}
             alt={`Перевернутая карта`}
             onLoad={onImgLoad}

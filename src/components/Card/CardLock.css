@@ -1,0 +1,4 @@
+card-lock {
+  transform: rotateY(180deg);
+  transition: none;
+}

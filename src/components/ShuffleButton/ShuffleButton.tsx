@@ -1,6 +1,6 @@
 import { shuffle } from "@/assets/icons";
 import { FC } from "react";
-import "./ShuffleButton.css";
+import styles from "./ShuffleButton.module.css";
 
 interface IShuffleButton {
   addShuffle: () => void;
@@ -8,11 +8,11 @@ interface IShuffleButton {
 
 const ShuffleButton: FC<IShuffleButton> = ({ addShuffle }) => {
   return (
-    <button className="shuffle-cards">
+    <button className={styles.shuffleCards}>
       <img
         key={23}
         draggable={false}
-        className="gallery-item__shuffle-img"
+        className={styles.galleryItemShuffleImg}
         src={shuffle}
         alt={`Перемешать карты`}
         onClick={addShuffle}

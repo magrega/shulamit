@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
-import "./Navbar.css";
-import { NavLink } from "react-router";
+import { NavLink, NavLinkRenderProps } from "react-router";
+import styles from "./Navbar.module.css";
 
 const Navbar = () => {
+  const BASE_URL = "https://www.shulanika.ru";
   const [isActive, setIsActive] = useState(false);
+  const setActiveClass = ({ isActive }: NavLinkRenderProps) =>
+    `${styles.navbarA} ${isActive ? styles.active : ""}`;
 
   const handleClick = () => {
     if (window.innerWidth < 870) setIsActive((current) => !current);
@@ -22,48 +25,59 @@ const Navbar = () => {
   }, [isActive]);
 
   return (
-    <nav className="navbar__container">
-      <ul className={isActive ? "navbar__list active" : "navbar__list"}>
-        <li className="navbar__li">
-          <a className="navbar__a" href="https://www.shulanika.ru/">
+    <nav className={styles.navbarContainer}>
+      <ul
+        className={
+          isActive
+            ? `${styles.navbarList} ${styles.active}`
+            : `${styles.navbarList}`
+        }
+      >
+        <li className={styles.navbarLi}>
+          <a className={styles.navbarA} href={`${BASE_URL}`}>
             На главную
           </a>
         </li>
-        <li className="navbar__li">
-          <a
-            className="navbar__a"
-            href="https://www.shulanika.ru/internet-magazin"
-          >
+        <li className={styles.navbarLi}>
+          <a className={styles.navbarA} href={`${BASE_URL}/internet-magazin`}>
             Интернет-магазин
           </a>
         </li>
-        <li className="navbar__li">
+        <li className={styles.navbarLi}>
           <a
-            className="navbar__a"
-            href="https://www.shulanika.ru/internet-magazin#contacts-shop"
+            className={styles.navbarA}
+            href={`${BASE_URL}/internet-magazin#contacts-shop`}
           >
             Контакты
           </a>
         </li>
-        <li className="navbar__li">
-          <NavLink onClick={handleClick} className="navbar__a" to="/intro">
+        <li className={styles.navbarLi}>
+          <NavLink onClick={handleClick} className={setActiveClass} to="/intro">
             Знакомство с картами
           </NavLink>
         </li>
-        <li className="navbar__li">
-          <NavLink onClick={handleClick} className="navbar__a" to="/interact">
+        <li className={styles.navbarLi}>
+          <NavLink
+            onClick={handleClick}
+            className={setActiveClass}
+            to="/interact"
+          >
             Работа с картами
           </NavLink>
         </li>
       </ul>
-      <div className="navbar__mobile">
-        <span className="navbar__title">
-          <a className="navbar__a" href="https://shulanika.ru/">
+      <div className={styles.navbarMobile}>
+        <span className={styles.navbarTitle}>
+          <a className={styles.navbarA} href={BASE_URL}>
             shulanika.ru
           </a>
         </span>
         <div
-          className={isActive ? "navbar__burger active" : "navbar__burger"}
+          className={
+            isActive
+              ? `${styles.navbarBurger} ${styles.active}`
+              : `${styles.navbarBurger}`
+          }
           onClick={handleClick}
         >
           <span></span>

@@ -8,7 +8,7 @@
     "skipLibCheck": true,
     "paths": {
       "@/*": ["./src/*"],
-      "@assets/*": ["./src/shared/assets/*"]
+      "@assets/*": ["./src/assets/*"]
     },
     /* Bundler mode */
     "moduleResolution": "bundler",
