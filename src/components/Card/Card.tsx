@@ -1,25 +1,27 @@
+import { ICardData } from "@/types";
 import { FC } from "react";
 import { Link } from "react-router";
 import { cardBack, imagesArray } from "../../assets/img";
-import { TCardData } from "../Gallery/Gallery";
 import styles from "./Card.module.css";
-import "./CardLock.css";
 
 interface ICard {
-  card: TCardData;
+  card: ICardData;
   onImgLoad: () => void;
+  animatedClass?: string;
   isCardBack?: boolean;
 }
 
-const Card: FC<ICard> = ({ card, onImgLoad, isCardBack = false }) => {
+const Card: FC<ICard> = ({
+  card,
+  onImgLoad,
+  animatedClass = "",
+  isCardBack = false,
+}) => {
   return (
-    <div className={`${styles.galleryItem} gallery-item`}>
+    <div className={`${styles.galleryItem} ${animatedClass}`}>
       <div
-        className={
-          isCardBack
-            ? `${styles.galleryItemInner} ${styles.rotate}`
-            : `${styles.galleryItemInner}`
-        }
+        className={` ${styles.galleryItemInner} 
+         ${isCardBack ? styles.rotate : ""}`}
       >
         <div className={styles.galleryItemFront}>
           <Link style={{ display: "contents" }} to={`/card/${card.id}`}>

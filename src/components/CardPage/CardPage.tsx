@@ -1,17 +1,16 @@
+import pulse from "@/animation/pulse.module.css";
 import cards from "@/assets/cards.json";
 import { backArrow, cardNextPrev } from "@/assets/icons";
 import { cardBack } from "@/assets/img";
 import { videosArray } from "@/assets/video";
-import { FC } from "react";
+import { FC, useState } from "react";
 import { Navigate, useNavigate, useParams } from "react-router";
 import styles from "./CardPage.module.css";
 
 const CardPage: FC = () => {
   const { id } = useParams();
   const idNum = Number(id);
-
   const navigate = useNavigate();
-
   const goBack = () => navigate(-1);
   const goNext = () => {
     if (idNum >= cards.length) return;
@@ -21,16 +20,7 @@ const CardPage: FC = () => {
     if (idNum <= 1) return;
     navigate(`/card/${idNum - 1}`, { replace: true });
   };
-
-  const addPulseClass = () =>
-    document
-      .querySelector(`.${styles.cardpageCardVid}`)
-      ?.classList.add(styles.pulseVideo);
-
-  const removePulseClass = () =>
-    document
-      .querySelector(`.${styles.cardpageCardVid}`)
-      ?.classList.remove(styles.pulseVideo);
+  const [isPulsing, setPulsing] = useState(true);
 
   if (cards[idNum] === undefined) return <Navigate to="/intro" replace />;
 
@@ -51,9 +41,10 @@ const CardPage: FC = () => {
         <div className={styles.cardpageBody}>
           <div className={styles.videoContainer}>
             <video
-              onLoadStart={addPulseClass}
-              onPlaying={removePulseClass}
-              className={`${styles.cardpageCardVid} ${styles.pulseVideo}`}
+              onPlaying={() => setPulsing(false)}
+              className={`${styles.cardpageCardVid} ${
+                isPulsing ? pulse.pulseVideo : ""
+              }`}
               poster={cardBack}
               autoPlay
               loop

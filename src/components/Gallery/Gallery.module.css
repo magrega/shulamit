@@ -13,8 +13,3 @@
   user-select: none;
   /* Standard syntax */
 }
-
-.card-lock > div {
-  transform: rotateY(180deg) !important;
-  transition: none;
-}

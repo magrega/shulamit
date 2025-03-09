@@ -1,0 +1,13 @@
+.pulse-video {
+  animation: 1s infinite alternate pulse-video;
+}
+
+@keyframes pulse-video {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0.5;
+  }
+}
