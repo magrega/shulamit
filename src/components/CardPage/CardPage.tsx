@@ -79,7 +79,7 @@ const CardPage: FC = () => {
         <button
           className={
             idNum === 0
-              ? `${styles.cardpageBtn}${styles.inactive}`
+              ? `${styles.cardpageBtn} ${styles.inactive}`
               : styles.cardpageBtn
           }
           onClick={goPrev}
@@ -92,8 +92,8 @@ const CardPage: FC = () => {
         </button>
         <button
           className={
-            idNum === cards.length
-              ? `${styles.cardpageBtn}${styles.inactive}`
+            idNum === cards.length - 1
+              ? `${styles.cardpageBtn} ${styles.inactive}`
               : styles.cardpageBtn
           }
           onClick={goNext}
