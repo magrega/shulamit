@@ -24,7 +24,7 @@ const Card: FC<ICard> = ({
          ${isCardBack ? styles.rotate : ""}`}
       >
         <div className={styles.galleryItemFront}>
-          <Link style={{ display: "contents" }} to={`/card/${card.id}`}>
+          <Link style={{ display: "contents" }} to={`/card/${card.id + 1}`}>
             <img
               draggable={false}
               className={styles.galleryItemPic}
