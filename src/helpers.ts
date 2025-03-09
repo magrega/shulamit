@@ -8,3 +8,5 @@ export const shuffleArray = (array: ICardData[]) => {
   }
   return shuffledArray;
 };
+
+export const BASE_URL = "https://www.shulanika.ru";

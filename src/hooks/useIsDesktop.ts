@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 export const useIsDesktop = () => {
-  const breakpoint = 900;
+  const breakpoint = 870;
   const [isDesktop, setIsDesktop] = useState(window.innerWidth > breakpoint);
 
   useEffect(() => {
@@ -11,5 +11,5 @@ export const useIsDesktop = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, [setIsDesktop]);
 
-  return isDesktop;
+  return { isDesktop };
 };

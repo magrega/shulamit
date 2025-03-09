@@ -15,7 +15,7 @@ interface IGallery {
 const Gallery: FC<IGallery> = ({ isCardBack }) => {
   const [cardsArray, setCardsArray] = useState(shuffleArray(cards));
   const [imagesLoaded, setImagesLoaded] = useState(0);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [isShaking, setShaking] = useState(false);
 
   const onImgLoad = () => setImagesLoaded((prev) => prev + 1);

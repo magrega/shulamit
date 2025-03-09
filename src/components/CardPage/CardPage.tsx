@@ -78,7 +78,7 @@ const CardPage: FC = () => {
       <div className={styles.cardpageButtons}>
         <button
           className={
-            idNum === 1
+            idNum === 0
               ? `${styles.cardpageBtn}${styles.inactive}`
               : styles.cardpageBtn
           }
