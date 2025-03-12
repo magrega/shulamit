@@ -1,4 +1,5 @@
 import { ICardData } from "./types";
+export const BASE_URL = "https://www.shulanika.ru";
 
 export const shuffleArray = (array: ICardData[]) => {
   const shuffledArray = [...array];
@@ -9,4 +10,4 @@ export const shuffleArray = (array: ICardData[]) => {
   return shuffledArray;
 };
 
-export const BASE_URL = "https://www.shulanika.ru";
+export const moveScrollToTop = () => window.scroll(0, 0);

@@ -3,11 +3,14 @@ import cards from "@/assets/cards.json";
 import { backArrow, cardNextPrev } from "@/assets/icons";
 import { cardBack } from "@/assets/img";
 import { videosArray } from "@/assets/video";
+import { moveScrollToTop } from "@/helpers";
+import { useSwipe } from "@/hooks/useSwipe";
 import { FC, useCallback, useEffect, useState } from "react";
 import { Navigate, useNavigate, useParams } from "react-router";
 import styles from "./CardPage.module.css";
 
 const CardPage: FC = () => {
+  const { onTouchStart, onTouchMove, onTouchEnd } = useSwipe();
   const [isPulsing, setPulsing] = useState(true);
 
   const { id } = useParams();
@@ -15,15 +18,25 @@ const CardPage: FC = () => {
   const cardId = Number(id) - 1;
 
   const navigate = useNavigate();
+
   const goBack = useCallback(() => navigate(-1), [navigate]);
   const goNext = useCallback(() => {
     if (idNum >= cards.length) return;
+    moveScrollToTop();
     navigate(`/card/${idNum + 1}`, { replace: true });
   }, [idNum, navigate]);
+
   const goPrev = useCallback(() => {
     if (idNum <= 1) return;
+    moveScrollToTop();
     navigate(`/card/${idNum - 1}`, { replace: true });
   }, [idNum, navigate]);
+
+  const handleSwipeEnd = () => {
+    const swipeDir = onTouchEnd();
+    if (swipeDir === "left") goNext();
+    if (swipeDir === "right") goPrev();
+  };
 
   useEffect(() => {
     const onKeyDown = (e: KeyboardEvent) => {
@@ -40,7 +53,12 @@ const CardPage: FC = () => {
 
   return (
     <>
-      <div className={styles.cardpage}>
+      <div
+        className={styles.cardpage}
+        onTouchStart={onTouchStart}
+        onTouchMove={onTouchMove}
+        onTouchEnd={handleSwipeEnd}
+      >
         <button className={styles.cardpageBtn} onClick={goBack}>
           <span className={styles.cardpageClosebtnWrapper}>
             <img
