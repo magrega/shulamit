@@ -4,9 +4,9 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev:client": "vite --host",
-    "dev:api": "npx json-server public/cards.json --port 3002",
-    "dev": "npm run dev:api && npm run dev:client",
+    "dev:client": "start vite --host",
+    "dev:api": "start npx json-server public/cards.json --port 3002",
+    "dev": "npm run dev:client & npm run dev:api",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview"
