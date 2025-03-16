@@ -25,7 +25,7 @@ export const CardsProvider = ({ children }: PropsWithChildren) => {
     const mode = process.env.NODE_ENV;
     const localApi = "http://192.168.88.11:3002/cards";
     const ghApi =
-      "https://my-json-server.typicode.com/magrega/shulamitJSONDB/cards";
+      "https://my-json-server.typicode.com/magrega/shulamitJSONDB/db";
 
     if (mode === "development") return localApi;
     if (mode === "production") return ghApi;
