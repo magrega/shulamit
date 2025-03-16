@@ -1,6 +1,7 @@
 {
   "name": "shulamit-vite",
   "private": true,
+  "homepage": "https://magrega.github.io/shulamit",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
@@ -9,7 +10,9 @@
     "dev": "npm run dev:client & npm run dev:api",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "dependencies": {
     "axios": "^1.8.3",
