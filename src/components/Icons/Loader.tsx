@@ -1,9 +1,9 @@
 import { ClockLoader } from "react-spinners";
-import styles from "./Loader.module.css";
+import styles from "./Icons.module.css";
 
 const Loader = () => {
   return (
-    <div className={styles.loaderWrapper}>
+    <div className={styles.iconWrapper}>
       <ClockLoader color="#e3ba64" />
     </div>
   );

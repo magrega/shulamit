@@ -21,6 +21,7 @@ import image7 from "./7.webp";
 import image8 from "./8.webp";
 import image9 from "./9.webp";
 import cardBack from "./cardBack.webp";
+import errorIcon from "./error.svg";
 
 export const imagesArray = [
   image1,
@@ -47,4 +48,4 @@ export const imagesArray = [
   image22,
 ];
 
-export { cardBack };
+export { cardBack, errorIcon };

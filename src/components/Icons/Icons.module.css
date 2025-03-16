@@ -1,8 +1,9 @@
-.loader-wrapper {
+.icon-wrapper {
   display: flex;
   align-items: center;
   justify-content: center;
   position: absolute;
+  flex-wrap: wrap;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -10,4 +11,17 @@
   height: 100%;
   background-color: #fff;
   z-index: 5;
+}
+
+.error-wrapper {
+  padding: 10px;
+  align-content: center;
+  gap: 5px;
+  text-align: justify;
+}
+
+.error-icon {
+  width: 10%;
+  min-width: 45px;
+  max-width: 90px;
 }

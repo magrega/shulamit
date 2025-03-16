@@ -1,5 +1,5 @@
 export interface ICardData {
-  id: number;
+  id: string;
   totem: string;
   letter: string;
   meaning: string;

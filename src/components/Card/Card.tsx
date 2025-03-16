@@ -17,6 +17,7 @@ const Card: FC<ICard> = ({
   animatedClass = "",
   isCardBack = false,
 }) => {
+  const id = +card.id;
   return (
     <div className={`${styles.galleryItem} ${animatedClass}`}>
       <div
@@ -24,11 +25,11 @@ const Card: FC<ICard> = ({
          ${isCardBack ? styles.rotate : ""}`}
       >
         <div className={styles.galleryItemFront}>
-          <Link style={{ display: "contents" }} to={`/card/${card.id + 1}`}>
+          <Link style={{ display: "contents" }} to={`/card/${id + 1}`}>
             <img
               draggable={false}
               className={styles.galleryItemPic}
-              src={imagesArray[card.id]}
+              src={imagesArray[id]}
               alt={`${card.totem}`}
               onLoad={onImgLoad}
             />
