@@ -24,12 +24,11 @@ export const CardsProvider = ({ children }: PropsWithChildren) => {
   const getCurrentNodeEnv = () => {
     const mode = process.env.NODE_ENV;
     const localApi = "http://192.168.88.11:3002/cards";
-    const ghApi =
-      "https://my-json-server.typicode.com/magrega/shulamitJSONDB/cards";
+    const jsonServer = "http://metabroadcast.ru:3000/cards";
 
     if (mode === "development") return localApi;
-    if (mode === "production") return ghApi;
-    return ghApi;
+    if (mode === "production") return jsonServer;
+    return jsonServer;
   };
 
   const [cards, setCards] = useState<ICardData[]>([]);
@@ -43,8 +42,6 @@ export const CardsProvider = ({ children }: PropsWithChildren) => {
         setLoading(true);
         setError(false);
         const request = await axios.get(getCurrentNodeEnv());
-        console.log(request);
-
         setCards(request.data);
         setShuffledCards(shuffleArray(request.data));
       } catch (error) {
