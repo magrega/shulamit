@@ -12,6 +12,7 @@ import styles from "./Gallery.module.css";
 interface IGallery {
   isCardBack: boolean;
 }
+console.log(process.env.NODE_ENV);
 
 const Gallery: FC<IGallery> = ({ isCardBack }) => {
   const { pathname } = useLocation();
@@ -20,24 +21,19 @@ const Gallery: FC<IGallery> = ({ isCardBack }) => {
 
   const [isImgLoading, setImgLoading] = useState(true);
   const [imagesLoaded, setImagesLoaded] = useState(0);
-  const onImgLoad = () => {
-    setImagesLoaded((prev) => prev + 1);
-  };
+  const onImgLoad = () => setImagesLoaded((prev) => prev + 1);
 
   const [isShaking, setShaking] = useState(false);
 
-  const shuffleCards = (cardsArray: ICardData[]) => {
+  const shuffleCards = (cardsArray: ICardData[]) =>
     setShuffledCards(shuffleArray(cardsArray));
-  };
 
   const addShuffle = () => {
     shuffleCards(shuffledCards);
     setShaking(true);
   };
 
-  const removeShuffle = () => {
-    setShaking(false);
-  };
+  const removeShuffle = () => setShaking(false);
 
   useEffect(() => {
     setImagesLoaded(0);
@@ -45,9 +41,7 @@ const Gallery: FC<IGallery> = ({ isCardBack }) => {
   }, [pathname]);
 
   useEffect(() => {
-    if (cards.length && imagesLoaded === cards.length * 2) {
-      setImgLoading(false);
-    }
+    if (cards.length && imagesLoaded === cards.length * 2) setImgLoading(false);
   }, [cards.length, imagesLoaded]);
 
   if (isError) return <Overlay isError />;

@@ -1,9 +1,9 @@
 import pulse from "@/animation/pulse.module.css";
-import cards from "@/assets/cards.json";
 import { backArrow, cardNextPrev } from "@/assets/icons";
 import { cardBack } from "@/assets/img";
 import { videosArray } from "@/assets/video";
 import { moveScrollToTop } from "@/helpers";
+import { useCards } from "@/hooks/useCards";
 import { useSwipe } from "@/hooks/useSwipe";
 import { FC, useCallback, useEffect, useState } from "react";
 import { Navigate, useNavigate, useParams } from "react-router";
@@ -11,6 +11,7 @@ import styles from "./CardPage.module.css";
 
 const CardPage: FC = () => {
   const { onTouchStart, onTouchMove, onTouchEnd } = useSwipe();
+  const { cards } = useCards();
   const [isPulsing, setPulsing] = useState(true);
 
   const { id } = useParams();
@@ -23,7 +24,7 @@ const CardPage: FC = () => {
   const goNext = useCallback(() => {
     if (idNum >= cards.length) return;
     navigate(`/card/${idNum + 1}`, { replace: true });
-  }, [idNum, navigate]);
+  }, [cards.length, idNum, navigate]);
 
   const goPrev = useCallback(() => {
     if (idNum <= 1) return;
