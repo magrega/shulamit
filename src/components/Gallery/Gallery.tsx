@@ -52,21 +52,18 @@ const Gallery: FC<IGallery> = ({ isCardBack }) => {
 
   if (isError) return <Overlay isError />;
 
-  // const isPageLoading = true;
   const isPageLoading = isLoading || isImgLoading;
 
   return (
     <>
       {<Overlay isLoading={isPageLoading} />}
 
-      <div
-        style={{ display: isPageLoading ? "none" : "flex" }}
-        onAnimationEnd={removeShuffle}
-      >
+      <div style={{ display: isPageLoading ? "none" : "flex" }}>
         <div
           className={`${styles.galleryContainer} ${
             isShaking ? shake.animateShakeX : ""
           }`}
+          onAnimationEnd={removeShuffle}
         >
           {isCardBack
             ? shuffledCards.map((card: ICardData) => (
