@@ -14,7 +14,7 @@ export const useCards = () => {
       try {
         setLoading(true);
         setError(false);
-        const request = await axios.get("http://localhost:3002/cards");
+        const request = await axios.get("http://192.168.88.11:3002/cards");
         setCards(request.data);
         setShuffledCards(shuffleArray(request.data));
       } catch (error) {
@@ -22,7 +22,6 @@ export const useCards = () => {
         setError(true);
       } finally {
         setLoading(false);
-        setError(true);
       }
     };
 

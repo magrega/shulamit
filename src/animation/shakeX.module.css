@@ -2,8 +2,8 @@
   animation-duration: 1s;
   animation-fill-mode: both;
   animation-name: shakeX;
-  -webkit-animation-fill-mode: both;
   -webkit-animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
   -webkit-animation-name: shakeX;
 }
 

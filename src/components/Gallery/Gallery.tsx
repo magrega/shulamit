@@ -5,8 +5,7 @@ import { ICardData } from "@/types";
 import { FC, useEffect, useState } from "react";
 import { useLocation } from "react-router";
 import Card from "../Card/Card";
-import Error from "../Icons/Error";
-import Loader from "../Icons/Loader";
+import Overlay from "../Icons/Overlay";
 import ShuffleButton from "../ShuffleButton/ShuffleButton";
 import styles from "./Gallery.module.css";
 
@@ -19,7 +18,7 @@ const Gallery: FC<IGallery> = ({ isCardBack }) => {
   const { isLoading, isError, cards, shuffledCards, setShuffledCards } =
     useCards();
 
-  const [imgLoading, setImgLoading] = useState(true);
+  const [isImgLoading, setImgLoading] = useState(true);
   const [imagesLoaded, setImagesLoaded] = useState(0);
   const onImgLoad = () => {
     setImagesLoaded((prev) => prev + 1);
@@ -51,34 +50,40 @@ const Gallery: FC<IGallery> = ({ isCardBack }) => {
     }
   }, [cards.length, imagesLoaded]);
 
-  if (isError) return <Error />;
+  if (isError) return <Overlay isError />;
+
+  // const isPageLoading = true;
+  const isPageLoading = isLoading || isImgLoading;
 
   return (
     <>
-      {(isLoading || imgLoading) && <Loader />}
+      {<Overlay isLoading={isPageLoading} />}
 
       <div
-        className={`${styles.galleryContainer} ${
-          isShaking ? shake.animateShakeX : ""
-        }`}
-        style={{ display: imgLoading ? "none" : "flex" }}
+        style={{ display: isPageLoading ? "none" : "flex" }}
         onAnimationEnd={removeShuffle}
       >
-        {isCardBack
-          ? shuffledCards.map((card: ICardData) => (
-              <Card
-                key={card.id}
-                card={card}
-                onImgLoad={onImgLoad}
-                animatedClass={isShaking ? shake.cardLock : ""}
-                isCardBack
-              />
-            ))
-          : cards.map((card: ICardData) => (
-              <Card key={card.id + "a"} card={card} onImgLoad={onImgLoad} />
-            ))}
+        <div
+          className={`${styles.galleryContainer} ${
+            isShaking ? shake.animateShakeX : ""
+          }`}
+        >
+          {isCardBack
+            ? shuffledCards.map((card: ICardData) => (
+                <Card
+                  key={card.id}
+                  card={card}
+                  onImgLoad={onImgLoad}
+                  animatedClass={isShaking ? shake.cardLock : ""}
+                  isCardBack
+                />
+              ))
+            : cards.map((card: ICardData) => (
+                <Card key={card.id + "a"} card={card} onImgLoad={onImgLoad} />
+              ))}
+        </div>
+        {isCardBack && <ShuffleButton addShuffle={addShuffle} />}
       </div>
-      {isCardBack && <ShuffleButton addShuffle={addShuffle} />}
     </>
   );
 };

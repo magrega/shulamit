@@ -22,13 +22,11 @@ const CardPage: FC = () => {
   const goBack = useCallback(() => navigate(-1), [navigate]);
   const goNext = useCallback(() => {
     if (idNum >= cards.length) return;
-    moveScrollToTop();
     navigate(`/card/${idNum + 1}`, { replace: true });
   }, [idNum, navigate]);
 
   const goPrev = useCallback(() => {
     if (idNum <= 1) return;
-    moveScrollToTop();
     navigate(`/card/${idNum - 1}`, { replace: true });
   }, [idNum, navigate]);
 
@@ -45,9 +43,12 @@ const CardPage: FC = () => {
       if (e.key === "Escape") goBack();
     };
 
-    window.addEventListener("keydown", onKeyDown);
-    return () => window.removeEventListener("keydown", onKeyDown);
+    const ctrl = new AbortController();
+    window.addEventListener("keydown", onKeyDown, ctrl);
+    return () => ctrl.abort();
   }, [goBack, goNext, goPrev]);
+
+  useEffect(() => moveScrollToTop, [idNum]);
 
   if (cards[cardId] === undefined) return <Navigate to="/intro" replace />;
 
