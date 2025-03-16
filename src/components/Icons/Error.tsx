@@ -9,7 +9,7 @@ const Error = () => {
         alt="There was an error"
         className={styles.errorIcon}
       />
-      <p>There was an error loading cards. Try again later.</p>
+      <p>Произошла ошибка при загрузке карточек, попробуйте позже.</p>
     </div>
   );
 };

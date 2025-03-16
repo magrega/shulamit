@@ -12,7 +12,6 @@ import styles from "./Gallery.module.css";
 interface IGallery {
   isCardBack: boolean;
 }
-console.log(process.env.NODE_ENV);
 
 const Gallery: FC<IGallery> = ({ isCardBack }) => {
   const { pathname } = useLocation();

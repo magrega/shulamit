@@ -24,9 +24,12 @@ export const CardsProvider = ({ children }: PropsWithChildren) => {
   const getCurrentNodeEnv = () => {
     const mode = process.env.NODE_ENV;
     const localApi = "http://192.168.88.11:3002/cards";
+    const ghApi =
+      "https://my-json-server.typicode.com/magrega/shulamitJSONDB/cards";
 
     if (mode === "development") return localApi;
-    return localApi;
+    if (mode === "production") return ghApi;
+    return ghApi;
   };
 
   const [cards, setCards] = useState<ICardData[]>([]);
