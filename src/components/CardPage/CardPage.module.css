@@ -9,6 +9,27 @@
   overflow: hidden;
 }
 
+.cardpage-h2 {
+  margin-bottom: 8px;
+}
+
+.cardpage-hint {
+  margin-top: 0;
+  text-align: center;
+  font-size: 12px;
+  filter: contrast(10%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  column-gap: 5px;
+}
+
+.cardpage-icon {
+  width: auto;
+  height: 12px;
+}
+
 .cardpage-btn {
   padding: 0;
   border: none;
