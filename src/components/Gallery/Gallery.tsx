@@ -3,7 +3,6 @@ import { shuffleArray } from "@/helpers";
 import { useCards } from "@/hooks/useCards";
 import { ICardData } from "@/types";
 import { FC, useEffect, useState } from "react";
-import { useLocation } from "react-router";
 import Card from "../Card/Card";
 import Overlay from "../Icons/Overlay";
 import ShuffleButton from "../ShuffleButton/ShuffleButton";
@@ -14,7 +13,6 @@ interface IGallery {
 }
 
 const Gallery: FC<IGallery> = ({ isCardBack }) => {
-  const { pathname } = useLocation();
   const { isLoading, isError, cards, shuffledCards, setShuffledCards } =
     useCards();
 
@@ -35,17 +33,16 @@ const Gallery: FC<IGallery> = ({ isCardBack }) => {
   const removeShuffle = () => setShaking(false);
 
   useEffect(() => {
-    setImagesLoaded(0);
-    setImgLoading(true);
-  }, [pathname]);
-
-  useEffect(() => {
-    if (cards.length && imagesLoaded === cards.length * 2) setImgLoading(false);
+    if (cards.length && imagesLoaded === cards.length * 2) {
+      setImgLoading(false);
+      setImagesLoaded(0);
+    }
   }, [cards.length, imagesLoaded]);
 
   if (isError) return <Overlay isError />;
 
   const isPageLoading = isLoading || isImgLoading;
+  console.log(isPageLoading);
 
   return (
     <>
