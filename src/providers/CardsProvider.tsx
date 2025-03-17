@@ -24,7 +24,7 @@ export const CardsProvider = ({ children }: PropsWithChildren) => {
   const getCurrentNodeEnv = () => {
     const mode = process.env.NODE_ENV;
     const localApi = "http://192.168.88.11:3002/cards";
-    const jsonServer = "http://metabroadcast.ru:3000/cards";
+    const jsonServer = "https://metabroadcast.ru:3000/cards";
 
     if (mode === "development") return localApi;
     if (mode === "production") return jsonServer;
