@@ -42,7 +42,6 @@ const Gallery: FC<IGallery> = ({ isCardBack }) => {
   if (isError) return <Overlay isError />;
 
   const isPageLoading = isLoading || isImgLoading;
-  console.log(isPageLoading);
 
   return (
     <>

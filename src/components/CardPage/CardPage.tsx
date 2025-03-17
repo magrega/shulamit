@@ -51,6 +51,7 @@ const CardPage: FC = () => {
   }, [goBack, goNext, goPrev]);
 
   useEffect(() => moveScrollToTop, [idNum]);
+  useEffect(() => setPulsing(true), [idNum]);
 
   if (isLoading) return <Loader />;
   if (cards[cardId] === undefined) return <Navigate to="/intro" replace />;
