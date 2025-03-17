@@ -7,11 +7,12 @@ import { useCards } from "@/hooks/useCards";
 import { useSwipe } from "@/hooks/useSwipe";
 import { FC, useCallback, useEffect, useState } from "react";
 import { Navigate, useNavigate, useParams } from "react-router";
+import Loader from "../Icons/Loader";
 import styles from "./CardPage.module.css";
 
 const CardPage: FC = () => {
   const { onTouchStart, onTouchMove, onTouchEnd } = useSwipe();
-  const { cards } = useCards();
+  const { cards, isLoading } = useCards();
   const [isPulsing, setPulsing] = useState(true);
 
   const { id } = useParams();
@@ -51,6 +52,7 @@ const CardPage: FC = () => {
 
   useEffect(() => moveScrollToTop, [idNum]);
 
+  if (isLoading) return <Loader />;
   if (cards[cardId] === undefined) return <Navigate to="/intro" replace />;
 
   return (
