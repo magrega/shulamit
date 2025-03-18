@@ -1,5 +1,5 @@
 import pulse from "@/animation/pulse.module.css";
-import { arrowLeft, arrowRight, backArrow, cardNextPrev } from "@/assets/icons";
+import { backArrow, cardNextPrev } from "@/assets/icons";
 import { cardBack } from "@/assets/img";
 import { videosArray } from "@/assets/video";
 import { moveScrollToTop } from "@/helpers";
@@ -9,6 +9,7 @@ import { FC, useCallback, useEffect, useState } from "react";
 import { Navigate, useNavigate, useParams } from "react-router";
 import Loader from "../Icons/Loader";
 import styles from "./CardPage.module.css";
+import CardPageHint from "./CardPageHint";
 
 const CardPage: FC = () => {
   const { onTouchStart, onTouchMove, onTouchEnd } = useSwipe();
@@ -75,11 +76,7 @@ const CardPage: FC = () => {
           </span>
         </button>
         <h2 className={styles.cardpageH2}>{cards[cardId].totem}</h2>
-        <p className={styles.cardpageHint}>
-          Используйте <img src={arrowLeft} className={styles.cardpageIcon} />
-          <img src={arrowRight} className={styles.cardpageIcon} /> или
-          смахивайте влево\вправо, чтобы сменить карточку.
-        </p>
+        <CardPageHint />
         <div className={styles.cardpageBody}>
           <div className={styles.videoContainer}>
             <video

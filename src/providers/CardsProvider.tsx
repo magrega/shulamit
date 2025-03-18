@@ -23,7 +23,7 @@ const CardsContext = createContext<ICardsContext>({} as ICardsContext);
 export const CardsProvider = ({ children }: PropsWithChildren) => {
   const getCurrentNodeEnv = () => {
     const mode = process.env.NODE_ENV;
-    const localApi = "http://192.168.88.11:3002/cards";
+    const localApi = "http://192.168.88.12:3002/cards";
     const jsonServer = "https://jsonapi.metabroadcast.ru/cards";
 
     if (mode === "development") return localApi;
