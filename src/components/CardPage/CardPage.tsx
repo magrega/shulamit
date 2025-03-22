@@ -1,6 +1,5 @@
 import pulse from "@/animation/pulse.module.css";
-import { backArrow, cardNextPrev } from "@/assets/icons";
-import { cardBack } from "@/assets/img";
+import { cardNextPrev } from "@/assets/icons";
 import { videosArray } from "@/assets/video";
 import { moveScrollToTop } from "@/helpers";
 import { useCards } from "@/hooks/useCards";
@@ -8,8 +7,11 @@ import { useSwipe } from "@/hooks/useSwipe";
 import { FC, useCallback, useEffect, useState } from "react";
 import { Navigate, useNavigate, useParams } from "react-router";
 import Loader from "../Icons/Loader";
+import BackBtn from "./BackBtn";
 import styles from "./CardPage.module.css";
 import CardPageHint from "./CardPageHint";
+import CardText from "./CardText";
+import CardVideo from "./CardVideo";
 
 const CardPage: FC = () => {
   const { onTouchStart, onTouchMove, onTouchEnd } = useSwipe();
@@ -59,59 +61,24 @@ const CardPage: FC = () => {
 
   return (
     <>
-      <div
-        className={styles.cardpage}
-        onTouchStart={onTouchStart}
-        onTouchMove={onTouchMove}
-        onTouchEnd={handleSwipeEnd}
-      >
-        <button className={styles.cardpageBtn} onClick={goBack}>
-          <span className={styles.cardpageClosebtnWrapper}>
-            <img
-              className={styles.cardpageClosebtnWrapperImg}
-              src={backArrow}
-              alt="back arrow"
-            />
-            Назад
-          </span>
-        </button>
+      <div className={styles.cardpage}>
+        <BackBtn onClick={goBack} />
         <h2 className={styles.cardpageH2}>{cards[cardId].totem}</h2>
         <CardPageHint />
-        <div className={styles.cardpageBody}>
-          <div className={styles.videoContainer}>
-            <video
-              onPlaying={() => setPulsing(false)}
-              className={`${styles.cardpageCardVid} ${
-                isPulsing ? pulse.pulseVideo : ""
-              }`}
-              poster={cardBack}
-              autoPlay
-              loop
-              playsInline
-              muted
-              src={videosArray[cardId]}
-            />
-          </div>
-          <p className={styles.cardpageText}>
-            <span className={styles.cardpageTextCategory}>Буква Иврита: </span>
-            {cards[cardId].letter}
-          </p>
-          <p className={styles.cardpageText}>
-            <span className={styles.cardpageTextCategory}>Значение: </span>
-            {cards[cardId].meaning}
-          </p>
-          <p className={styles.cardpageText}>
-            <span className={styles.cardpageTextCategory}>Элемент: </span>
-            {cards[cardId].element}
-          </p>
-          <p className={styles.cardpageText}>
-            <span className={styles.cardpageTextCategory}>Символы: </span>
-            {cards[cardId].symbols}
-          </p>
-          <span className={styles.cardpageTextDescription}>
-            <span className={styles.cardpageTextCategory}>Описание: </span>
-            {cards[cardId].description}
-          </span>
+        <div
+          className={styles.cardpageBody}
+          onTouchStart={onTouchStart}
+          onTouchMove={onTouchMove}
+          onTouchEnd={handleSwipeEnd}
+        >
+          <CardVideo
+            onPlaying={() => setPulsing(false)}
+            className={`${styles.cardpageCardVid} ${
+              isPulsing ? pulse.pulseVideo : ""
+            }`}
+            src={videosArray[cardId]}
+          />
+          <CardText card={cards[cardId]} />
         </div>
       </div>
       <div className={styles.cardpageButtons}>
