@@ -10,9 +10,4 @@ export const shuffleArray = (array: ICardData[]) => {
   return shuffledArray;
 };
 
-export const moveScrollToTop = () =>
-  window.scrollTo({
-    top: 0,
-    left: 0,
-    behavior: "instant",
-  });
+export const moveScrollToTop = () => window.scroll(0, 0);

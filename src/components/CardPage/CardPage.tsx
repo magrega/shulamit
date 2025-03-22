@@ -4,7 +4,7 @@ import { videosArray } from "@/assets/video";
 import { moveScrollToTop } from "@/helpers";
 import { useCards } from "@/hooks/useCards";
 import { useSwipe } from "@/hooks/useSwipe";
-import { FC, useCallback, useEffect, useState } from "react";
+import { FC, useCallback, useEffect, useLayoutEffect, useState } from "react";
 import { Navigate, useNavigate, useParams } from "react-router";
 import Loader from "../Icons/Loader";
 import BackBtn from "./BackBtn";
@@ -53,7 +53,7 @@ const CardPage: FC = () => {
     return () => ctrl.abort();
   }, [goBack, goNext, goPrev]);
 
-  useEffect(() => moveScrollToTop, [idNum]);
+  useLayoutEffect(() => moveScrollToTop, [idNum]);
   useEffect(() => setPulsing(true), [idNum]);
 
   if (isLoading) return <Loader />;
