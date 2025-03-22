@@ -9,5 +9,3 @@ export const shuffleArray = (array: ICardData[]) => {
   }
   return shuffledArray;
 };
-
-export const moveScrollToTop = () => window.scroll(0, 0);

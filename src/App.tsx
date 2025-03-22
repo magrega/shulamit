@@ -3,11 +3,13 @@ import "./App.css";
 import CardPage from "./components/CardPage/CardPage";
 import Gallery from "./components/Gallery/Gallery";
 import Layout from "./components/Layout/Layout";
+import ScrollToTop from "./components/ScrollToTop";
 import { CardsProvider } from "./providers/CardsProvider";
 
 const App = () => (
   <CardsProvider>
     <BrowserRouter>
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index path="/intro" element={<Gallery isCardBack={false} />} />
