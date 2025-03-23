@@ -13,7 +13,7 @@
     "preview": "vite preview",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist",
-    "ftp": "tsc -b && vite build && copy nginx.conf dist/nginx.conf && ftpDeploy"
+    "ftp": "tsc -b && vite build && copy nginx.conf dist/nginx.conf && node --env-file=.env ftpDeploy.js"
   },
   "dependencies": {
     "axios": "^1.8.3",
