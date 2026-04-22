@@ -1,0 +1,15 @@
+{
+  "name": "shulamit-vite",
+  "private": true,
+  "homepage": "https://magrega.github.io/shulamit",
+  "version": "0.0.0",
+  "type": "commonjs",
+  "scripts": {
+    "serve": "concurrently --kill-others \"serve -s dist -l 5173\" \"json-server public/cards.json --port 3002\""
+  },
+  "dependencies": {
+    "concurrently": "^9.2.1",
+    "json-server": "^1.0.0-beta.3",
+    "serve": "^14.2.6"
+  }
+}

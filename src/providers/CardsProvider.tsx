@@ -24,11 +24,11 @@ export const CardsProvider = ({ children }: PropsWithChildren) => {
   const getCurrentNodeEnv = () => {
     const mode = process.env.NODE_ENV;
     const localApi = "http://localhost:3002/cards";
-    const jsonServer = "https://jsonapi.metabroadcast.ru/cards";
+    // const jsonServer = "https://jsonapi.metabroadcast.ru/cards";
 
     if (mode === "development") return localApi;
-    if (mode === "production") return jsonServer;
-    return jsonServer;
+    if (mode === "production") return localApi;
+    return localApi;
   };
 
   const [cards, setCards] = useState<ICardData[]>([]);
