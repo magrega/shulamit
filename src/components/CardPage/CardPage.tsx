@@ -1,6 +1,7 @@
 import pulse from "@/animation/pulse.module.css";
 import { cardNextPrev } from "@/assets/icons";
 import { videosArray } from "@/assets/video";
+import { cn } from "@/helpers";
 import { useCards } from "@/hooks/useCards";
 import { useSwipe } from "@/hooks/useSwipe";
 import { FC, useCallback, useEffect, useState } from "react";
@@ -71,9 +72,7 @@ const CardPage: FC = () => {
         >
           <CardVideo
             onPlaying={() => setPulsing(false)}
-            className={`${styles.cardpageCardVid} ${
-              isPulsing ? pulse.pulseVideo : ""
-            }`}
+            className={cn(styles.cardpageCardVid, isPulsing && pulse.pulseVideo)}
             src={videosArray[card.id]}
           />
           <CardText card={card} />
@@ -81,11 +80,7 @@ const CardPage: FC = () => {
       </div>
       <div className={styles.cardpageButtons}>
         <button
-          className={
-            index <= 0
-              ? `${styles.cardpageBtn} ${styles.inactive}`
-              : styles.cardpageBtn
-          }
+          className={cn(styles.cardpageBtn, index <= 0 && styles.inactive)}
           onClick={goPrev}
         >
           <img
@@ -95,11 +90,10 @@ const CardPage: FC = () => {
           />
         </button>
         <button
-          className={
-            index >= cards.length - 1
-              ? `${styles.cardpageBtn} ${styles.inactive}`
-              : styles.cardpageBtn
-          }
+          className={cn(
+            styles.cardpageBtn,
+            index >= cards.length - 1 && styles.inactive
+          )}
           onClick={goNext}
         >
           <img

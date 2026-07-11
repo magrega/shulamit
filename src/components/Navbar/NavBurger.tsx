@@ -1,4 +1,5 @@
 import { BASE_URL } from "@/constants";
+import { cn } from "@/helpers";
 import { useEffect, useState } from "react";
 import styles from "./Navbar.module.css";
 import NavList from "./NavList";
@@ -26,11 +27,7 @@ const NavBurger = () => {
           </a>
         </span>
         <div
-          className={
-            isMenuShown
-              ? `${styles.navbarBurger} ${styles.active}`
-              : `${styles.navbarBurger}`
-          }
+          className={cn(styles.navbarBurger, isMenuShown && styles.active)}
           onClick={handleClick}
         >
           <span></span>

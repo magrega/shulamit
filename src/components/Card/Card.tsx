@@ -1,3 +1,4 @@
+import { cn } from "@/helpers";
 import { ICardData } from "@/types";
 import { FC } from "react";
 import { Link } from "react-router";
@@ -18,10 +19,9 @@ const Card: FC<ICard> = ({
   isCardBack = false,
 }) => {
   return (
-    <div className={`${styles.galleryItem} ${animatedClass}`}>
+    <div className={cn(styles.galleryItem, animatedClass)}>
       <div
-        className={` ${styles.galleryItemInner}
-         ${isCardBack ? styles.rotate : ""}`}
+        className={cn(styles.galleryItemInner, isCardBack && styles.rotate)}
       >
         <div className={styles.galleryItemFront}>
           <Link style={{ display: "contents" }} to={`/card/${card.id}`}>

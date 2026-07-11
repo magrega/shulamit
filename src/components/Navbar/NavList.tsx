@@ -1,7 +1,8 @@
+import { BASE_URL } from "@/constants";
+import { cn } from "@/helpers";
 import { Dispatch, SetStateAction } from "react";
 import { NavLink, NavLinkRenderProps } from "react-router";
 import styles from "./Navbar.module.css";
-import { BASE_URL } from "@/constants";
 
 interface NavListProps {
   isMenuShown?: boolean;
@@ -20,12 +21,12 @@ const pages = [
 
 const NavList = ({ isMenuShown = false, setMenuShown }: NavListProps) => {
   const setActiveClass = ({ isActive }: NavLinkRenderProps) =>
-    `${styles.navbarA} ${isActive ? styles.active : ""}`;
+    cn(styles.navbarA, isActive && styles.active);
 
   const handleClick = () => setMenuShown && setMenuShown(false);
 
   return (
-    <ul className={`${styles.navbarList} ${isMenuShown ? styles.active : ""}`}>
+    <ul className={cn(styles.navbarList, isMenuShown && styles.active)}>
       {pages.map((page) => (
         <li className={styles.navbarLi} key={page.pageLink}>
           <NavLink

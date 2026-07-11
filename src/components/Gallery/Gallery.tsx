@@ -1,5 +1,5 @@
 import shake from "@/animation/shakeX.module.css";
-import { shuffleArray } from "@/helpers";
+import { cn, shuffleArray } from "@/helpers";
 import { useCards } from "@/hooks/useCards";
 import { ICardData } from "@/types";
 import { FC, useEffect, useState } from "react";
@@ -49,9 +49,7 @@ const Gallery: FC<IGallery> = ({ isCardBack }) => {
 
       <div style={{ display: isPageLoading ? "none" : "flex" }}>
         <div
-          className={`${styles.galleryContainer} ${
-            isShaking ? shake.animateShakeX : ""
-          }`}
+          className={cn(styles.galleryContainer, isShaking && shake.animateShakeX)}
           onAnimationEnd={removeShuffle}
         >
           {isCardBack
