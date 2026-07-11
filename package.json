@@ -9,7 +9,6 @@
     "dev:api": "json-server public/cards.json --port 3002",
     "dev": "concurrently \"npm run dev:client\" \"npm run dev:api\"",
     "build": "tsc -b && vite build",
-    "build:win": "tsc -b && vite build && copy nginx.conf dist/nginx.conf",
     "lint": "eslint .",
     "preview": "vite preview",
     "predeploy": "npm run build",
