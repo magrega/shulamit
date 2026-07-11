@@ -9,16 +9,14 @@ html {
 }
 
 html,
-body,
-#root {
+body {
   min-height: 100dvh;
-  scrollbar-gutter: stable;
 }
 
 #root {
+  height: 100dvh;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
 }
 
 ul {
