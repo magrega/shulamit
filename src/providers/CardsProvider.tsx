@@ -1,3 +1,4 @@
+import { localApi } from "@/constants";
 import { shuffleArray } from "@/helpers";
 import { ICardData } from "@/types";
 import axios from "axios";
@@ -21,16 +22,6 @@ interface ICardsContext {
 const CardsContext = createContext<ICardsContext>({} as ICardsContext);
 
 export const CardsProvider = ({ children }: PropsWithChildren) => {
-  const getCurrentNodeEnv = () => {
-    const mode = process.env.NODE_ENV;
-    const localApi = "http://localhost:3002/cards";
-    // const jsonServer = "https://jsonapi.metabroadcast.ru/cards";
-
-    if (mode === "development") return localApi;
-    if (mode === "production") return localApi;
-    return localApi;
-  };
-
   const [cards, setCards] = useState<ICardData[]>([]);
   const [shuffledCards, setShuffledCards] = useState<ICardData[]>([]);
   const [isLoading, setLoading] = useState(true);
@@ -41,7 +32,7 @@ export const CardsProvider = ({ children }: PropsWithChildren) => {
       try {
         setLoading(true);
         setError(false);
-        const request = await axios.get(getCurrentNodeEnv());
+        const request = await axios.get(localApi);
         setCards(request.data);
         setShuffledCards(shuffleArray(request.data));
       } catch (error) {
