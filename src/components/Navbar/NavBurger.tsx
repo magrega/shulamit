@@ -1,4 +1,4 @@
-import { BASE_URL } from "@/helpers";
+import { BASE_URL } from "@/constants";
 import { useEffect, useState } from "react";
 import styles from "./Navbar.module.css";
 import NavList from "./NavList";
