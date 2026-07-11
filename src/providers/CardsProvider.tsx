@@ -33,8 +33,11 @@ export const CardsProvider = ({ children }: PropsWithChildren) => {
         setLoading(true);
         setError(false);
         const request = await axios.get(localApi);
-        setCards(request.data);
-        setShuffledCards(shuffleArray(request.data));
+        const sorted = [...request.data].sort(
+          (a: ICardData, b: ICardData) => a.id - b.id
+        );
+        setCards(sorted);
+        setShuffledCards(shuffleArray(sorted));
       } catch (error) {
         console.error(`There was an error fetching cards: ${error}`);
         setError(true);

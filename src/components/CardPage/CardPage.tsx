@@ -18,21 +18,21 @@ const CardPage: FC = () => {
   const [isPulsing, setPulsing] = useState(true);
 
   const { id } = useParams();
-  const idNum = Number(id);
-  const cardId = Number(id) - 1;
+  const index = cards.findIndex((c) => String(c.id) === id);
+  const card = cards[index];
 
   const navigate = useNavigate();
 
   const goBack = useCallback(() => navigate(-1), [navigate]);
   const goNext = useCallback(() => {
-    if (idNum >= cards.length) return;
-    navigate(`/card/${idNum + 1}`, { replace: true });
-  }, [cards.length, idNum, navigate]);
+    const next = cards[index + 1];
+    if (next) navigate(`/card/${next.id}`, { replace: true });
+  }, [cards, index, navigate]);
 
   const goPrev = useCallback(() => {
-    if (idNum <= 1) return;
-    navigate(`/card/${idNum - 1}`, { replace: true });
-  }, [idNum, navigate]);
+    const prev = cards[index - 1];
+    if (prev) navigate(`/card/${prev.id}`, { replace: true });
+  }, [cards, index, navigate]);
 
   const handleSwipeEnd = () => {
     const swipeDir = onTouchEnd();
@@ -52,16 +52,16 @@ const CardPage: FC = () => {
     return () => ctrl.abort();
   }, [goBack, goNext, goPrev]);
 
-  useEffect(() => setPulsing(true), [idNum]);
+  useEffect(() => setPulsing(true), [index]);
 
   if (isLoading) return <Loader />;
-  if (cards[cardId] === undefined) return <Navigate to="/intro" replace />;
+  if (!card) return <Navigate to="/intro" replace />;
 
   return (
     <>
       <div className={styles.cardpage}>
         <BackBtn onClick={goBack} />
-        <h2 className={styles.cardpageH2}>{cards[cardId].totem}</h2>
+        <h2 className={styles.cardpageH2}>{card.totem}</h2>
         <CardPageHint />
         <div
           className={styles.cardpageBody}
@@ -74,15 +74,15 @@ const CardPage: FC = () => {
             className={`${styles.cardpageCardVid} ${
               isPulsing ? pulse.pulseVideo : ""
             }`}
-            src={videosArray[cardId]}
+            src={videosArray[card.id]}
           />
-          <CardText card={cards[cardId]} />
+          <CardText card={card} />
         </div>
       </div>
       <div className={styles.cardpageButtons}>
         <button
           className={
-            cardId === 0
+            index <= 0
               ? `${styles.cardpageBtn} ${styles.inactive}`
               : styles.cardpageBtn
           }
@@ -96,7 +96,7 @@ const CardPage: FC = () => {
         </button>
         <button
           className={
-            cardId === cards.length - 1
+            index >= cards.length - 1
               ? `${styles.cardpageBtn} ${styles.inactive}`
               : styles.cardpageBtn
           }
