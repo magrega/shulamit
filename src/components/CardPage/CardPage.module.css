@@ -114,6 +114,7 @@
   flex-grow: 1;
   flex-wrap: wrap;
   align-content: flex-end;
+  margin-bottom: 20px;
 }
 
 .cardpage-prevbtn {
