@@ -1,7 +1,7 @@
-import { BASE_URL } from "@/helpers";
 import { Dispatch, SetStateAction } from "react";
 import { NavLink, NavLinkRenderProps } from "react-router";
 import styles from "./Navbar.module.css";
+import { BASE_URL } from "@/constants";
 
 interface NavListProps {
   isMenuShown?: boolean;
