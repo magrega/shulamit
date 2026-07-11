@@ -1,7 +1,6 @@
 import { localApi } from "@/constants";
 import { shuffleArray } from "@/helpers";
 import { ICardData } from "@/types";
-import axios from "axios";
 import {
   createContext,
   Dispatch,
@@ -32,10 +31,10 @@ export const CardsProvider = ({ children }: PropsWithChildren) => {
       try {
         setLoading(true);
         setError(false);
-        const request = await axios.get(localApi);
-        const sorted = [...request.data].sort(
-          (a: ICardData, b: ICardData) => a.id - b.id
-        );
+        const response = await fetch(localApi);
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        const data: ICardData[] = await response.json();
+        const sorted = [...data].sort((a, b) => a.id - b.id);
         setCards(sorted);
         setShuffledCards(shuffleArray(sorted));
       } catch (error) {
