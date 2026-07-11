@@ -8,7 +8,7 @@ interface IShuffleButton {
 
 const ShuffleButton: FC<IShuffleButton> = ({ addShuffle }) => {
   return (
-    <button className={styles.shuffleCards} onClick={addShuffle}>
+    <button className={styles.shuffleCards} onClick={addShuffle} type="button">
       <img
         draggable={false}
         className={styles.galleryItemShuffleImg}

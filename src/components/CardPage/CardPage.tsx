@@ -72,7 +72,10 @@ const CardPage: FC = () => {
         >
           <CardVideo
             onPlaying={() => setPulsing(false)}
-            className={cn(styles.cardpageCardVid, isPulsing && pulse.pulseVideo)}
+            className={cn(
+              styles.cardpageCardVid,
+              isPulsing && pulse.pulseVideo,
+            )}
             src={videosArray[card.id]}
           />
           <CardText card={card} />
@@ -80,6 +83,7 @@ const CardPage: FC = () => {
       </div>
       <div className={styles.cardpageButtons}>
         <button
+          type="button"
           className={cn(styles.cardpageBtn, index <= 0 && styles.inactive)}
           onClick={goPrev}
         >
@@ -90,9 +94,10 @@ const CardPage: FC = () => {
           />
         </button>
         <button
+          type="button"
           className={cn(
             styles.cardpageBtn,
-            index >= cards.length - 1 && styles.inactive
+            index >= cards.length - 1 && styles.inactive,
           )}
           onClick={goNext}
         >
