@@ -7,19 +7,18 @@ interface NavListProps {
   isMenuShown?: boolean;
   setMenuShown?: Dispatch<SetStateAction<boolean>>;
 }
+const pages = [
+  { pageName: "На главную", pageLink: BASE_URL },
+  { pageName: "Интернет-магазин", pageLink: `${BASE_URL}/internet-magazin` },
+  {
+    pageName: "Контакты",
+    pageLink: `${BASE_URL}/internet-magazin#contacts-shop`,
+  },
+  { pageName: "Знакомство с картами", pageLink: "/intro" },
+  { pageName: "Работа с картами", pageLink: "/interact" },
+];
 
 const NavList = ({ isMenuShown = false, setMenuShown }: NavListProps) => {
-  const pages = [
-    { pageName: "На главную", pageLink: BASE_URL },
-    { pageName: "Интернет-магазин", pageLink: `${BASE_URL}/internet-magazin` },
-    {
-      pageName: "Контакты",
-      pageLink: `${BASE_URL}/internet-magazin#contacts-shop`,
-    },
-    { pageName: "Знакомство с картами", pageLink: "/intro" },
-    { pageName: "Работа с картами", pageLink: "/interact" },
-  ];
-
   const setActiveClass = ({ isActive }: NavLinkRenderProps) =>
     `${styles.navbarA} ${isActive ? styles.active : ""}`;
 

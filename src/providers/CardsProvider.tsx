@@ -45,7 +45,7 @@ export const CardsProvider = ({ children }: PropsWithChildren) => {
         setCards(request.data);
         setShuffledCards(shuffleArray(request.data));
       } catch (error) {
-        console.log(`There was an error fetching cards: ${error}`);
+        console.error(`There was an error fetching cards: ${error}`);
         setError(true);
       } finally {
         setLoading(false);

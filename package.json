@@ -3,7 +3,7 @@
   "private": true,
   "homepage": "https://magrega.github.io/shulamit",
   "version": "0.0.0",
-  "type": "commonjs",
+  "type": "module",
   "scripts": {
     "dev:client": "vite --host",
     "dev:api": "json-server public/cards.json --port 3002",

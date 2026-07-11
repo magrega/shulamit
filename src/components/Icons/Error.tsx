@@ -3,7 +3,7 @@ import styles from "./Icons.module.css";
 
 const Error = () => {
   return (
-    <div className={`${styles.iconWrapper} + ${styles.errorWrapper}`}>
+    <div className={`${styles.iconWrapper} ${styles.errorWrapper}`}>
       <img
         src={errorIcon}
         alt="There was an error"
