@@ -1,4 +1,4 @@
-import { BASE_URL } from "@/constants";
+import { NIKA_URL } from "@/constants";
 import { cn } from "@/helpers";
 import { Dispatch, SetStateAction } from "react";
 import { NavLink, NavLinkRenderProps } from "react-router";
@@ -9,11 +9,11 @@ interface NavListProps {
   setMenuShown?: Dispatch<SetStateAction<boolean>>;
 }
 const pages = [
-  { pageName: "На главную", pageLink: BASE_URL },
-  { pageName: "Интернет-магазин", pageLink: `${BASE_URL}/internet-magazin` },
+  { pageName: "На главную", pageLink: NIKA_URL },
+  { pageName: "Интернет-магазин", pageLink: `${NIKA_URL}/internet-magazin` },
   {
     pageName: "Контакты",
-    pageLink: `${BASE_URL}/internet-magazin#contacts-shop`,
+    pageLink: `${NIKA_URL}/internet-magazin#contacts-shop`,
   },
   { pageName: "Знакомство с картами", pageLink: "/intro" },
   { pageName: "Работа с картами", pageLink: "/interact" },

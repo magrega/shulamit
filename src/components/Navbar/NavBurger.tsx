@@ -1,4 +1,4 @@
-import { BASE_URL } from "@/constants";
+import { NIKA_URL } from "@/constants";
 import { cn } from "@/helpers";
 import { useEffect, useState } from "react";
 import styles from "./Navbar.module.css";
@@ -22,7 +22,7 @@ const NavBurger = () => {
       <NavList isMenuShown={isMenuShown} setMenuShown={setMenuShown} />
       <div className={styles.navbarMobile}>
         <span className={styles.navbarTitle}>
-          <a className={styles.navbarA} href={BASE_URL}>
+          <a className={styles.navbarA} href={NIKA_URL}>
             shulanika.ru
           </a>
         </span>

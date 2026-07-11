@@ -1,6 +1,5 @@
 import pulse from "@/animation/pulse.module.css";
 import { cardNextPrev } from "@/assets/icons";
-import { videosArray } from "@/assets/video";
 import { cn } from "@/helpers";
 import { useCards } from "@/hooks/useCards";
 import { useSwipe } from "@/hooks/useSwipe";
@@ -76,7 +75,7 @@ const CardPage: FC = () => {
               styles.cardpageCardVid,
               isPulsing && pulse.pulseVideo,
             )}
-            src={videosArray[card.id]}
+            src={`/video/${card.id}.mp4`}
           />
           <CardText card={card} />
         </div>
