@@ -32,6 +32,7 @@ const Card: FC<ICard> = ({
               src={imagesArray[id]}
               alt={`${card.totem}`}
               onLoad={onImgLoad}
+              onError={onImgLoad}
             />
           </Link>
         </div>
@@ -42,6 +43,7 @@ const Card: FC<ICard> = ({
             src={cardBack}
             alt={`Перевернутая карта`}
             onLoad={onImgLoad}
+            onError={onImgLoad}
           />
         </div>
       </div>

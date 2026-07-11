@@ -33,7 +33,7 @@ const Gallery: FC<IGallery> = ({ isCardBack }) => {
   const removeShuffle = () => setShaking(false);
 
   useEffect(() => {
-    if (cards.length && imagesLoaded === cards.length * 2) {
+    if (cards.length && imagesLoaded >= cards.length * 2) {
       setImgLoading(false);
       setImagesLoaded(0);
     }
